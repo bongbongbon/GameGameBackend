@@ -1,0 +1,2 @@
+rootProject.name = 'gamegame'
+include 'eureka-server', 'user-service', 'quiz-service', 'api-gateway'
