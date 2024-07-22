@@ -13,15 +13,45 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins:
+              - 'http://localhost:3000' # 허용하려는 도메인
+            allow-credentials: true # 요청 시 인증 정보를 전송하도록 허가
+            allowedHeaders: '*' # 허용하려는 헤더
+            allowedMethods: # 허용하려는 HTTP 메서드
+              - PUT
+              - GET
+              - POST
+              - DELETE
+              - OPTIONS
       routes:
+          # 유저 서비스
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
             - Path=/api/users/**
+          # 퀴즈 서비스
         - id: quiz-service
           uri: lb://QUIZ-SERVICE
           predicates:
-            - Path=/api/quizzes/**
+            - Path=/api/quizzes/getAll/**
           filters:
             - RewritePath=/quiz-service/(?<segment>.*), /$\{segment}
+          # 인증 서비스
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - RewritePath=/auth-service/(?<segment>.*), /$\{segment}
 
+
+  jwt:
+    header: Authorization
+    prefix: Bearer
+    tokenExpirationTime: 727380891
+    secret: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwK
