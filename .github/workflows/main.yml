@@ -28,6 +28,12 @@ jobs:
           echo "${{ secrets.QUIZ_YML }}" > application.yml
         shell: bash
 
+      - name: Create application.yml in auth-service
+        run: |
+          cd ./auth-service/src/main/resources
+          echo "${{ secrets.AUTH_YML }}" > application.yml
+        shell: bash
+
       - name: Build with Gradle
         run: |
           chmod 777 ./gradlew
@@ -46,6 +52,8 @@ jobs:
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/user-service user-service
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service quiz-service
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway api-gateway
+          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/auth-service auth-service
+
 
 
       - name: Push Docker images
@@ -54,7 +62,7 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/user-service:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway:latest
-
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
 
           
       - name: Deploy services with Docker Compose
@@ -69,6 +77,8 @@ jobs:
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/user-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
+            
             sudo docker-compose -f docker-compose-backend.yml down
             sudo docker image prune -f
             sudo docker-compose -f docker-compose-backend.yml up -d
