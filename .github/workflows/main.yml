@@ -21,18 +21,18 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          
+      - name: Create application.yml in quiz-service
+        run: |
+          cd ./quiz-service/src/main/resources
+          echo "${{ secrets.QUIZ_YML }}" > application.yml
+        shell: bash
 
       - name: Build with Gradle
         run: |
           chmod 777 ./gradlew
           ./gradlew clean build -x test
 
-
-      - name: Create application.yml in quiz-service
-        run: |
-          cd ./quiz-service/src/main/resources
-          echo "${{ secrets.QUIZ_YML }}" > application.yml
-        shell: bash
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
