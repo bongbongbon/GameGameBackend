@@ -21,11 +21,24 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          
+      - name: Create application.yml in quiz-service
+        run: |
+          cd ./quiz-service/src/main/resources
+          echo "${{ secrets.QUIZ_YML }}" > application.yml
+        shell: bash
+
+      - name: Create application.yml in auth-service
+        run: |
+          cd ./auth-service/src/main/resources
+          echo "${{ secrets.AUTH_YML }}" > application.yml
+        shell: bash
 
       - name: Build with Gradle
         run: |
           chmod 777 ./gradlew
           ./gradlew clean build -x test
+
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
@@ -40,6 +53,7 @@ jobs:
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service quiz-service
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway api-gateway
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/auth-service auth-service
+
 
 
       - name: Push Docker images
@@ -64,6 +78,7 @@ jobs:
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
+            
             sudo docker-compose -f docker-compose-backend.yml down
             sudo docker image prune -f
             sudo docker-compose -f docker-compose-backend.yml up -d
