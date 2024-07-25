@@ -67,27 +67,6 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
 
-      - name: Deploy Kafka and related services
-        uses: appleboy/ssh-action@master
-        with:
-          username: ubuntu
-          host: ${{ secrets.LIVE_SERVER_IP }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script_stop: true
-          script: |
-            # Pull Kafka and related images
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/kafka:latest
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/zookeeper:latest
-            
-            # Start Kafka and Zookeeper services
-            sudo docker-compose -f docker-compose-kafka.yml up -d
-
-            # Wait for Kafka to be ready
-            echo "Waiting for Kafka to be ready..."
-            while ! docker exec kafka-container-name /bin/sh -c 'nc -z localhost 9092'; do
-              sleep 5
-            done
-            echo "Kafka is ready!"
 
       - name: Deploy other services with Docker Compose
         uses: appleboy/ssh-action@master
@@ -103,6 +82,11 @@ jobs:
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/user-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
+
+            # Deploy Kafka and related services
+            sudo docker-compose -f docker-compose-kafka.yml down
+            sudo docker image prune -f
+            sudo docker-compose -f docker-compose-kafka.yml up -d
             
             # Deploy backend services
             sudo docker-compose -f docker-compose-backend.yml down
