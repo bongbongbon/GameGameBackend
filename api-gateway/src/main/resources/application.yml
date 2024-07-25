@@ -68,7 +68,7 @@ management:
       produce: B3_MULTI
   zipkin:
     tracing:
-      endpoint: "http://localhost:9411/api/v2/spans"
+      endpoint: "http://3.37.198.42:9411/api/v2/spans"
 
 logging:
   pattern:
