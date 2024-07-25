@@ -22,7 +22,7 @@ spring:
     show-sql: true
 
   kafka:
-    bootstrap-servers: 3.37.198.42:29092
+    bootstrap-servers: 3.37.198.42:9092
     consumer:
       group-id: user-group
     listener:
