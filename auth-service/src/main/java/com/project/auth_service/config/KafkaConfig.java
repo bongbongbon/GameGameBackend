@@ -42,7 +42,7 @@ public class KafkaConfig {
     @Bean
     public ConsumerFactory<String, UserCreatedEvent> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:29092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "3.37.198.42:29092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "user-group");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
