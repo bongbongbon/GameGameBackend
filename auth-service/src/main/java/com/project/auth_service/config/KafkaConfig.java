@@ -43,7 +43,7 @@ public class KafkaConfig {
     public ConsumerFactory<String, UserCreatedEvent> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "3.37.198.42:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "user-group");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "auth-group");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         config.put(org.springframework.kafka.support.serializer.JsonDeserializer.TRUSTED_PACKAGES, "*");
