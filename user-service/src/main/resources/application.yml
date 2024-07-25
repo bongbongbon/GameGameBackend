@@ -22,7 +22,7 @@ spring:
     show-sql: true
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: localhost:29092
     consumer:
       group-id: user-group
     listener:
@@ -33,8 +33,6 @@ spring:
     prefix: Bearer
     tokenExpirationTime: 727380891
     secret: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwK
-
-
 
 
 eureka:

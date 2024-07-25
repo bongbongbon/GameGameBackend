@@ -42,9 +42,7 @@ public class SecurityConfig {
                 // 요청 권한 설정
                 .authorizeHttpRequests(authorize
                         -> authorize
-                        .requestMatchers("/api/auth/register").permitAll()
-                        .requestMatchers("/api/auth/login").permitAll()
-
+                        .requestMatchers("/api/auth/**").permitAll()
                 )
 
                 // 세션을 사용하지 않기 때문에 STATELESS로 설정한다.
