@@ -53,6 +53,7 @@ dependencies {
 	// mysql
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
+	implementation project(':auth-service')
 }
 
 dependencyManagement {
