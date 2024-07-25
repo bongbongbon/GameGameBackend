@@ -39,6 +39,18 @@ jobs:
           cd ./user-service/src/main/resources
           echo "${{ secrets.USER_YML }}" > application.yml
         shell: bash
+        
+      - name: Create application.yml in eureka-service
+        run: |
+          cd ./eureka-server/src/main/resources
+          echo "${{ secrets.EUREKA_YML }}" > application.yml
+        shell: bash
+
+      - name: Create application.yml in gateway-service
+        run: |
+          cd ./api-gateway/src/main/resources
+          echo "${{ secrets.GATEWAY_YML }}" > application.yml
+        shell: bash
 
       - name: Build with Gradle
         run: |
