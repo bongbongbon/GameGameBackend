@@ -33,6 +33,12 @@ jobs:
           cd ./auth-service/src/main/resources
           echo "${{ secrets.AUTH_YML }}" > application.yml
         shell: bash
+        
+      - name: Create application.yml in user-service
+        run: |
+          cd ./user-service/src/main/resources
+          echo "${{ secrets.USER_YML }}" > application.yml
+        shell: bash
 
       - name: Build with Gradle
         run: |
