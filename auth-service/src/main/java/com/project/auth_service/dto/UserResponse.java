@@ -17,14 +17,14 @@ public class UserResponse {
 
     protected String email;
 
-    protected String nickname;
+    protected String nickName;
 
 
     public static UserResponse fromEntity(User user) {
         return UserResponse.builder()
                 .id(user.getId())
                 .email(user.getEmail())
-                .nickname(user.getNickname())
+                .nickName(user.getNickName())
                 .build();
     }
 }

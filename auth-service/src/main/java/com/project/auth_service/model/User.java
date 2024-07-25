@@ -32,7 +32,7 @@ public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    private String nickname;
+    private String nickName;
 
     @Enumerated(EnumType.STRING)
     private UserRole userRole;

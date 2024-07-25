@@ -7,10 +7,12 @@ import com.project.auth_service.dto.UserTokenResponse;
 import com.project.auth_service.exception.CustomException;
 import com.project.auth_service.jwt.JwtUtil;
 import com.project.auth_service.model.User;
+import com.project.auth_service.model.UserCreatedEvent;
 import com.project.auth_service.repository.UserRepository;
 import com.project.auth_service.type.UserRole;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -31,25 +33,28 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final CustomUserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     // 회원가입
     @Transactional
     public UserResponse signUp(RegisterRequest request
                                ) throws UnsupportedEncodingException {
 
-        // 이메일 중복확인
-        isExistUserEmail(request.getEmail());
+            // 이메일 중복확인
+            isExistUserEmail(request.getEmail());
 
-        // 패스워드 체크
-        checkPassword(request.getPassword(), request.getPasswordCheck());
+            // 패스워드 체크
+            checkPassword(request.getPassword(), request.getPasswordCheck());
 
 
-        User user =  User.builder()
-                .email(request.getEmail())
-                .password(bCryptPasswordEncoder.encode(request.getPassword()))
-                .nickname(request.getNickName())
-                .userRole(UserRole.USER)
-                .build();
+            User user =  User.builder()
+                    .email(request.getEmail())
+                    .password(bCryptPasswordEncoder.encode(request.getPassword()))
+                    .nickName(request.getNickName())
+                    .userRole(UserRole.USER)
+                    .build();
+
+            kafkaTemplate.send("user_created", new UserCreatedEvent(user.getEmail(), user.getNickName(), request.getGender()));
 
 
         return UserResponse.fromEntity(userRepository.save(user));

@@ -17,5 +17,7 @@ public class RegisterRequest {
 
     private String nickName;
 
+    private String gender;
+
 
 }

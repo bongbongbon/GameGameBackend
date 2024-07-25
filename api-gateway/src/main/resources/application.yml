@@ -1,6 +1,8 @@
 server:
   port: 8080
 
+
+
 eureka:
   client:
     fetch-registry: true
@@ -8,9 +10,11 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka/
 
+
 spring:
   application:
     name: gateway-service
+
   cloud:
     gateway:
       default-filters:
@@ -49,9 +53,23 @@ spring:
           filters:
             - RewritePath=/auth-service/(?<segment>.*), /$\{segment}
 
-
   jwt:
     header: Authorization
     prefix: Bearer
     tokenExpirationTime: 727380891
     secret: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwK
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: B3
+      produce: B3_MULTI
+  zipkin:
+    tracing:
+      endpoint: "http://localhost:9411/api/v2/spans"
+
+logging:
+  pattern:
+    level: "%5p [%X{traceId:-},%X{spanId:-}]"

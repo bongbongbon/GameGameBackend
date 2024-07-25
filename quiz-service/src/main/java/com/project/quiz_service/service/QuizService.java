@@ -25,7 +25,7 @@ public class QuizService {
 
         Quiz quiz = Quiz.builder()
                 .category(request.getCategory())
-                .username(userClient.getCurrentUser(token))
+//                .username(userClient.getCurrentUser(token))
                 .title(request.getTitle())
                 .content(request.getContent())
                 .answer(request.getAnswer())

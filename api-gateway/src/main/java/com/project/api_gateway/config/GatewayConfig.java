@@ -19,6 +19,12 @@ public class GatewayConfig {
                         .uri("lb://QUIZ-SERVICE"))
                 .route("read_quiz_route", r -> r.path("/api/quizzes/getAll/**")
                         .uri("lb://QUIZ-SERVICE"))
+                .route("quiz_checkAnswer", r -> r.path("/api/quizzes/checkAnswer/**")
+                        .uri("lb://QUIZ-SERVICE"))
+                .route("auth_register", r -> r.path("/api/auth/register/**")
+                        .uri("lb://AUTH-SERVICE"))
+                .route("auth_login", r -> r.path("/api/auth/login/**")
+                        .uri("lb://AUTH-SERVICE"))
                 .build();
     }
 }

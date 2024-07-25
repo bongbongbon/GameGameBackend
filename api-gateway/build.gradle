@@ -41,6 +41,15 @@ dependencies {
 	implementation 'io.netty:netty-resolver-dns-native-macos:4.1.68.Final:osx-aarch_64'
 
 	annotationProcessor 'org.projectlombok:lombok'
+
+	implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+
+	implementation 'org.springframework.boot:spring-boot-starter-aop' // aop 추가
+
+	implementation 'io.zipkin.reporter2:zipkin-sender-urlconnection:3.4.0'
+
 }
 
 dependencyManagement {

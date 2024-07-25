@@ -18,7 +18,7 @@ public class UserTokenResponse {
     public static UserTokenResponse fromEntity(User user, String token) {
         return UserTokenResponse.builder()
                 .email(user.getEmail())
-                .nickname(user.getNickname())
+                .nickname(user.getNickName())
                 .token(token)
                 .build();
     }
