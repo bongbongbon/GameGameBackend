@@ -6,6 +6,7 @@ import com.project.quiz_service.exception.CustomException;
 import com.project.quiz_service.repository.QuizRepository;
 import com.project.quiz_service.request.QuizCheckAnswerRequest;
 import com.project.quiz_service.request.QuizCreateRequest;
+import com.project.quiz_service.request.ResultRequest;
 import com.project.quiz_service.response.QuizResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,13 +20,14 @@ public class QuizService {
 
     private final QuizRepository quizRepository;
     private final UserClient userClient;
+    private final ResultService resultService;
 
     // 퀴즈 만들기
     public void createQuiz(QuizCreateRequest request, String token) {
 
         Quiz quiz = Quiz.builder()
                 .category(request.getCategory())
-//                .username(userClient.getCurrentUser(token))
+                .username(userClient.getCurrentUser(token))
                 .title(request.getTitle())
                 .content(request.getContent())
                 .answer(request.getAnswer())
@@ -48,7 +50,7 @@ public class QuizService {
     }
 
     // 정답유무 확인
-    public Boolean checkAnswer(QuizCheckAnswerRequest request) {
+    public Boolean checkAnswer(QuizCheckAnswerRequest request, String token) {
 
         Boolean isCorrect = false;
 
@@ -60,6 +62,20 @@ public class QuizService {
             isCorrect = true;
         }
 
+        // ResultRequest로 Result에 저장할 값 담기
+        ResultRequest resultRequest = ResultRequest.builder()
+                .quizId(request.getQuizId())
+                .username(userClient.getCurrentUser(token))
+                .isCorrect(isCorrect)
+                .build();
+
+        
+        // ResultCreate하기
+        resultService.createResult(resultRequest);
+
         return isCorrect;
     }
+
+
+
 }

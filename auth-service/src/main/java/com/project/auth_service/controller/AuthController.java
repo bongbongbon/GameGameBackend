@@ -5,6 +5,7 @@ import com.project.auth_service.dto.LoginRequest;
 import com.project.auth_service.dto.RegisterRequest;
 import com.project.auth_service.dto.UserResponse;
 import com.project.auth_service.dto.UserTokenResponse;
+import com.project.auth_service.jwt.JwtUtil;
 import com.project.auth_service.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 public class AuthController {
 
     private final AuthService authService;
+    private final JwtUtil jwtUtil;
 
     // 회원가입
     @PostMapping("/register")
@@ -36,6 +38,11 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK).body(userTokenResponse);
     }
 
+    @PostMapping("/me")
+    public ResponseEntity<?> getCurrentUser(@RequestHeader("Authorization") String token) {
+
+        return ResponseEntity.ok().body(jwtUtil.getEmailFromJwt(token));
+    }
 
 
 }

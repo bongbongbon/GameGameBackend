@@ -38,11 +38,20 @@ public class SecurityConfig {
                 // token을 사용하는 방식이기 때문에 csrf를 disable 처리한다.
                 .csrf(csrf -> csrf.disable())
                 // CORS 설정
-                .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 // 요청 권한 설정
                 .authorizeHttpRequests(authorize
                         -> authorize
-                        .requestMatchers("/api/auth/**").permitAll()
+
+                        .requestMatchers(
+                                "/api/auth/checkId",
+                                "/api/auth/register/**",
+                                "/api/auth/login/**").permitAll()
+
+                        .requestMatchers(
+                                "/api/auth/me").permitAll()
+
+
+
                 )
 
                 // 세션을 사용하지 않기 때문에 STATELESS로 설정한다.

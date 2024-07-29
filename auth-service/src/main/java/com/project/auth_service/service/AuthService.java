@@ -64,7 +64,6 @@ public class AuthService {
     @Transactional
     public UserTokenResponse login(LoginRequest request) {
 
-        //
         authenticate(request.getEmail(), request.getPassword());
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
         checkEncodePassword(request.getPassword(), userDetails.getPassword());
@@ -73,7 +72,6 @@ public class AuthService {
         User loginUser = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> CustomException.USER_NOT_FOUND);
 
-        // 토큰 발행
         String token = jwtUtil.generateToken(userDetails);
         return UserTokenResponse.fromEntity(loginUser, token);
     }
