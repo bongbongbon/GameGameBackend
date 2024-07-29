@@ -62,6 +62,7 @@ public class QuizService {
             isCorrect = true;
         }
 
+
         // ResultRequest로 Result에 저장할 값 담기
         ResultRequest resultRequest = ResultRequest.builder()
                 .quizId(request.getQuizId())
@@ -69,7 +70,7 @@ public class QuizService {
                 .isCorrect(isCorrect)
                 .build();
 
-        
+
         // ResultCreate하기
         resultService.createResult(resultRequest);
 
