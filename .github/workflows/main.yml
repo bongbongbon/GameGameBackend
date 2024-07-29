@@ -21,6 +21,18 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Create application.yml in quiz-service
+        run: |
+          cd ./quiz-service/src/main/resources
+          echo "${{ secrets.QUIZ_YML }}" > application.yml
+        shell: bash
+
+      - name: Create application.yml in auth-service
+        run: |
+          cd ./auth-service/src/main/resources
+          echo "${{ secrets.AUTH_YML }}" > application.yml
+        shell: bash
           
 
       - name: Build with Gradle
