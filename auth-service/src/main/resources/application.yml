@@ -8,13 +8,13 @@ spring:
     discovery:
       client:
         service-url:
-          defaultZone: http://localhost:8761/eureka/
+          defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
 
   datasource:
-    driver-class-name:
-    url:
-    username:
-    password:
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
 
   jpa:
     hibernate:
