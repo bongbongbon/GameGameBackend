@@ -27,7 +27,6 @@ jobs:
           cd ./auth-service/src/main/resources
           touch ./application.yml
           echo "${{ secrets.AUTH_YML }}" >> ./application.yml
-        shell: bash
 
       - name: Build with Gradle
         run: |
