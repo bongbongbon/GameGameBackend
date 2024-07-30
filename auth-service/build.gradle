@@ -45,8 +45,6 @@ dependencies {
 
 	implementation 'org.json:json:20220924'
 
-	// kafka
-	implementation 'org.springframework.kafka:spring-kafka'
 
 	// jwt
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
