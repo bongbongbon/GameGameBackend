@@ -33,12 +33,11 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final CustomUserDetailsService userDetailsService;
     private final JwtUtil jwtUtil;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     // 회원가입
     @Transactional
     public UserResponse signUp(RegisterRequest request
-                               ) throws UnsupportedEncodingException {
+                               ) {
 
             // 이메일 중복확인
             isExistUserEmail(request.getEmail());
