@@ -8,7 +8,7 @@ spring:
     discovery:
       client:
         service-url:
-          defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
+          defaultZone: http://eureka-server:8761/eureka/
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
