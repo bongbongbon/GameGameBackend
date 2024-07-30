@@ -1,6 +1,16 @@
-# OpenJDK 17을 기반으로 하는 Docker 이미지 사용
-FROM --platform=linux/amd64 openjdk:17-alpine
+FROM bellsoft/liberica-openjdk-alpine:17
+
+
+CMD ["./gradlew", "clean", "build"]
+
+
 VOLUME /tmp
+
 ARG JAR_FILE=build/libs/*.jar
+
+
 COPY ${JAR_FILE} app.jar
+
+EXPOSE 8080
+
 ENTRYPOINT ["java","-jar","/app.jar"]
