@@ -15,6 +15,18 @@ spring:
   application:
     name: gateway-service
 
+  cors:
+    allowed-origins: "*"
+    allowed-methods:
+      - GET
+      - POST
+      - PUT
+      - DELETE
+      - OPTIONS
+    allowed-headers:
+      - "*"
+    allow-credentials: true
+
   cloud:
     gateway:
       routes:
@@ -44,16 +56,6 @@ spring:
     tokenExpirationTime: 727380891
     secret: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwK
 
-management:
-  tracing:
-    sampling:
-      probability: 1.0
-    propagation:
-      consume: B3
-      produce: B3_MULTI
-  zipkin:
-    tracing:
-      endpoint: "http://localhost:9411/api/v2/spans"
 
 logging:
   pattern:
