@@ -37,9 +37,6 @@ public class SecurityConfig {
                 .httpBasic(httpBasic -> httpBasic.disable())
                 // token을 사용하는 방식이기 때문에 csrf를 disable 처리한다.
                 .csrf(csrf -> csrf.disable())
-                // CORS 설정
-//                .cors(cors -> cors.configurationSource(corsConfigurationSource)) // CORS 설정 통합
-
                 // 요청 권한 설정
                 .authorizeHttpRequests(authorize
                         -> authorize

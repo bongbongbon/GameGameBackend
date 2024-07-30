@@ -53,8 +53,6 @@ public class AuthService {
                     .userRole(UserRole.USER)
                     .build();
 
-            kafkaTemplate.send("user_created", new UserCreatedEvent(user.getEmail(), request.getNickName(), request.getGender()));
-
 
         return UserResponse.fromEntity(userRepository.save(user));
     }
