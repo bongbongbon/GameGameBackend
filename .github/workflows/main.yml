@@ -22,9 +22,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Create application.yml
+      - name: Create directory
+        run: mkdir -p ./auth-service/src/main/resources
+
+      - name: Print MYSQL_PROPERTIES secret (for debugging)
+        run: echo "${{ secrets.AUTH_YML }}"
+        shell: bash
+
+      - name: Decode and create application-mysql.properties
         run: |
-          mkdir -p ./auth-service/src/main/resources
           echo "${{ secrets.AUTH_YML }}" | base64 --decode > ./auth-service/src/main/resources/application.yml
         shell: bash
 
