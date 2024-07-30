@@ -40,6 +40,12 @@ jobs:
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service quiz-service
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/auth-service auth-service
 
+      - name: Create application.yml in auth-service
+        run: |
+          mkdir -p ./auth-service/src/main/resources
+          echo "${{ secrets.AUTH_YML }}" > ./auth-service/src/main/resources/application.yml
+        shell: bash
+
       - name: Deploy docker-compose
         uses: appleboy/ssh-action@master
         with:
