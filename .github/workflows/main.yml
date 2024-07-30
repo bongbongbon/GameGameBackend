@@ -25,6 +25,7 @@ jobs:
       - name: Create application.yml
         run: |
           mkdir -p ./auth-service/src/main/resources
+          rm -f ./auth-service/src/main/resources/application.yml
           echo "${{ secrets.AUTH_YML }}" | base64 --decode > ./auth-service/src/main/resources/application.yml
         shell: bash
 
