@@ -22,11 +22,20 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: make application.yml
+      - name: Build Spring Boot services with Gradle
         run: |
-          cd ./auth-service/src/main/resources
-          touch ./application.yml
-          echo "${{ secrets.AUTH_YML }}" >> ./application.yml
+          cd eureka-server
+          ./gradlew build
+          cd api-gateway
+          ./gradlew build
+          cd ..
+          cd auth-service
+          ./gradlew build
+          cd ..
+          cd quiz-service
+          ./gradlew build
+          cd ..
+
 
       - name: Build with Gradle
         run: |
