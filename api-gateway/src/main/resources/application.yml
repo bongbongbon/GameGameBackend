@@ -38,10 +38,6 @@ spring:
           filters:
             - RewritePath=/auth-service/(?<segment>.*), /$\{segment}
 
-custom:
-  cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
-
   jwt:
     header: Authorization
     prefix: Bearer
