@@ -22,11 +22,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Create application.yml
+      - name: Create auth-application.yml
         run: |
           mkdir -p ./auth-service/src/main/resources
           rm -f ./auth-service/src/main/resources/application.yml
           echo "${{ secrets.AUTH_YML }}" | base64 --decode > ./auth-service/src/main/resources/application.yml
+        shell: bash
+
+      - name: Create api-gateway-application.yml
+        run: |
+          mkdir -p ./api-gateway/src/main/resources
+          rm -f ./api-gateway/src/main/resources/application.yml
+          echo "${{ secrets.GATE_YML }}" | base64 --decode > ./api-gateway/src/main/resources/application.yml
         shell: bash
 
       - name: Build with Gradle
