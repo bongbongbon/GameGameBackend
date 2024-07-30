@@ -26,6 +26,7 @@ jobs:
         run: |
           cd eureka-server
           ./gradlew build
+          cd ..
           cd api-gateway
           ./gradlew build
           cd ..
