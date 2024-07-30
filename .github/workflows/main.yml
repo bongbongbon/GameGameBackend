@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p ./api-gateway/src/main/resources
           rm -f ./api-gateway/src/main/resources/application.yml
-          echo "${{ secrets.GATE_YML }}" | base64 --decode > ./api-gateway/src/main/resources/application.yml
+          echo "${{ secrets.GATEWAY_YML }}" | base64 --decode > ./api-gateway/src/main/resources/application.yml
         shell: bash
 
       - name: Build with Gradle
