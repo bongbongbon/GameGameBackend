@@ -8,6 +8,8 @@ VOLUME /tmp
 
 ARG JAR_FILE=build/libs/*.jar
 
+# Copy the application files into the container
+COPY ./config/application.yml /app/config/application.yml
 
 COPY ${JAR_FILE} app.jar
 

@@ -23,7 +23,6 @@ public class SecurityConfig {
 
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final CorsConfigurationSource corsConfigurationSource;
 
     @Bean
     public AuthenticationManager authenticationManager(
@@ -48,9 +47,6 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/me").permitAll()
                         .requestMatchers("/api/auth/login/**").permitAll()
                         .requestMatchers("/api/auth/register/**").permitAll()
-
-
-
 
                 )
 

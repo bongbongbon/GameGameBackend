@@ -7,7 +7,9 @@ import com.project.auth_service.dto.UserResponse;
 import com.project.auth_service.dto.UserTokenResponse;
 import com.project.auth_service.jwt.JwtUtil;
 import com.project.auth_service.service.AuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +44,15 @@ public class AuthController {
     public ResponseEntity<?> getCurrentUser(@RequestHeader("Authorization") String token) {
 
         return ResponseEntity.ok().body(jwtUtil.getEmailFromJwt(token));
+    }
+
+    @PostMapping("/kafkacheck")
+    public ResponseEntity<?> kafkacheck() {
+
+        @Value("spring.kafka.bootstrap-servers")
+        private String kafka;
+
+        return ResponseEntity.ok().body(kafka);
     }
 
 

@@ -1,16 +1,15 @@
-FROM bellsoft/liberica-openjdk-alpine:17
+# Base image
+FROM openjdk:17-jdk-alpine
 
+# Create a directory for the application
+WORKDIR /app
 
-CMD ["./gradlew", "clean", "build"]
+# Copy the JAR file and application.yml
+COPY build/libs/auth-service.jar app.jar
+COPY src/main/resources/application.yml /config/application.yml
 
+# Define the entrypoint
+ENTRYPOINT ["java", "-jar", "/app.jar"]
 
-VOLUME /tmp
-
-ARG JAR_FILE=build/libs/*.jar
-
-
-COPY ${JAR_FILE} app.jar
-
+# Expose the port
 EXPOSE 8083
-
-ENTRYPOINT ["java","-jar","/app.jar"]
