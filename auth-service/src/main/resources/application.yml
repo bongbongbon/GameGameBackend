@@ -1,4 +1,0 @@
-# default
-spring:
-  profiles:
-    active: prod
