@@ -1,8 +1,6 @@
-# 해당 Application Port 를 8761 로 설정 
 server:
   port: 8761
 
-# 해당 application 이름을 다음과 같이 변경 
 spring:
   application:
     name: eureka-server
