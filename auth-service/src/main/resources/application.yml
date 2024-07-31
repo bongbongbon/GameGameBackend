@@ -1,32 +1,4 @@
+# default
 spring:
-  application:
-    name: auth-service
-  cloud:
-    discovery:
-      client:
-        service-url:
-          defaultZone: http://eureka-server:8761/eureka/
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://gamegamemsa.c72auqk86wix.ap-northeast-2.rds.amazonaws.com:3306/gamegame?serverTimezone=Asia/Seoul
-    username: admin
-    password: Gamegame1!
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
-  jwt:
-    header: Authorization
-    prefix: Bearer
-    tokenExpirationTime: 727380891
-    secret: c3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwtc3ByaW5nYm9vdC1qd3QtdHV0b3JpYWwK
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    preferIpAddress: true
-server:
-  port: 8083
+  profiles:
+    active: prod
