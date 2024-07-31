@@ -12,6 +12,7 @@ import com.project.auth_service.repository.UserRepository;
 import com.project.auth_service.type.UserRole;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -109,4 +110,5 @@ public class AuthService {
             throw CustomException.PASSWORD_NOT_MATCH;
         }
     }
+
 }
