@@ -26,7 +26,7 @@ jobs:
         run: |
           mkdir -p ./auth-service/src/main/resources
           rm -f ./auth-service/src/main/resources/application.yml
-          echo "${{ secrets.AUTH_YML }}" | base64 --decode > ./auth-service/src/main/resources/application.yml
+          echo "${{ secrets.AUTH_YML }}" > ./auth-service/src/main/resources/application.yml
         shell: bash
 
       - name: Create api-gateway-application.yml
@@ -63,18 +63,12 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script_stop: true
           script: |
-
-
             
             # Pull backend images
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/eureka-server:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
-
-            # Create application.yml from GitHub Secret
-            mkdir -p ./config
-            echo "${{ secrets.AUTH_YML }}" > ./config/application.yml
 
             
             # Deploy backend services
