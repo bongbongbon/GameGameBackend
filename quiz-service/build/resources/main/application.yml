@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: auth-service
+    name: quiz-service
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
