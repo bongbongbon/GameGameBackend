@@ -1,2 +1,1 @@
-rootProject.name = 'gamegame'
-include 'eureka-server', 'user-service', 'quiz-service', 'api-gateway', 'auth-service'
+rootProject.name = 'gamegameappbackend'
