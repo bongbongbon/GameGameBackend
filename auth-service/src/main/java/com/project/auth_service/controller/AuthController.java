@@ -46,14 +46,6 @@ public class AuthController {
         return ResponseEntity.ok().body(jwtUtil.getEmailFromJwt(token));
     }
 
-    @PostMapping("/kafkacheck")
-    public ResponseEntity<?> kafkacheck() {
-
-        @Value("spring.kafka.bootstrap-servers")
-        private String kafka;
-
-        return ResponseEntity.ok().body(kafka);
-    }
 
 
 }
