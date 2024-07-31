@@ -22,6 +22,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Create application.yml in auth-service
+        run: |
+          cd ./auth-service/src/main/resources
+          echo "${{ secrets.AUTH_YML }}" > application.yml
+        shell: bash
+
       - name: Build with Gradle
         run: |
           chmod 777 ./gradlew
