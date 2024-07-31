@@ -25,7 +25,7 @@ jobs:
       - name: Create application.yml for auth-service
         run: |
           mkdir -p ./auth-service/src/main/resources
-          echo "${{ secrets.AUTH_YML }}" > ./auth-service/src/main/resources/application.ym
+          echo "${{ secrets.AUTH_YML }}" > ./auth-service/src/main/resources/application.yml
 
       - name: Build with Gradle
         run: |
