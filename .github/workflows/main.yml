@@ -29,13 +29,6 @@ jobs:
           echo "${{ secrets.AUTH_YML }}" > ./auth-service/src/main/resources/application.yml
         shell: bash
 
-      - name: Create api-gateway-application.yml
-        run: |
-          mkdir -p ./api-gateway/src/main/resources
-          rm -f ./api-gateway/src/main/resources/application.yml
-          echo "${{ secrets.GATEWAY_YML }}" > ./api-gateway/src/main/resources/application.yml
-        shell: bash
-
       - name: Build with Gradle
         run: |
           chmod 777 ./gradlew
