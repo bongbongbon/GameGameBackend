@@ -5,7 +5,7 @@ spring:
     discovery:
       client:
         service-url:
-          default_zone: http://localhost:8761/eureka/  # Eureka 서버 URL 설정
+          default_zone: http://eureka-server:8761/eureka/  # Eureka 서버 URL 설정
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://gamegamemsa.c72auqk86wix.ap-northeast-2.rds.amazonaws.com:3306/gamegame?serverTimezone=Asia/Seoul
