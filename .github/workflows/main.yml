@@ -63,4 +63,8 @@ jobs:
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
 
+            # Deploy backend services
+            sudo docker-compose -f docker-compose-backend.yml down
+            sudo docker image prune -f
+            sudo docker-compose -f docker-compose-backend.yml up -d
   
