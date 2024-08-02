@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.project.auth_service.AuthServiceApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-31T09:19:54" hostname="gimsubong-ui-MacBookAir.local" time="0.291">
+<testsuite name="com.project.auth_service.AuthServiceApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-02T02:39:58" hostname="gimsubong-ui-MacBookAir.local" time="0.272">
   <properties/>
-  <testcase name="contextLoads()" classname="com.project.auth_service.AuthServiceApplicationTests" time="0.291"/>
-  <system-out><![CDATA[18:19:50.445 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.project.auth_service.AuthServiceApplicationTests]: AuthServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:19:50.516 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.project.auth_service.AuthServiceApplication for test class com.project.auth_service.AuthServiceApplicationTests
+  <testcase name="contextLoads()" classname="com.project.auth_service.AuthServiceApplicationTests" time="0.272"/>
+  <system-out><![CDATA[11:39:55.883 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.project.auth_service.AuthServiceApplicationTests]: AuthServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:39:55.932 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.project.auth_service.AuthServiceApplication for test class com.project.auth_service.AuthServiceApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,7 +14,7 @@
 
  :: Spring Boot ::                (v3.3.2)
 
-2024-07-31T18:19:50.882+09:00  WARN 85005 --- [auth-service] [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
+2024-08-02T11:39:56.106+09:00  WARN 81141 --- [auth-service] [    Test worker] ory$DuplicateJsonObjectContextCustomizer : 
 
 Found multiple occurrences of org.json.JSONObject on the class path:
 
@@ -23,48 +23,48 @@ Found multiple occurrences of org.json.JSONObject on the class path:
 
 You may wish to exclude one of them to ensure predictable runtime behavior
 
-2024-07-31T18:19:50.900+09:00  INFO 85005 --- [auth-service] [    Test worker] c.p.a.AuthServiceApplicationTests        : Starting AuthServiceApplicationTests using Java 17.0.10 with PID 85005 (started by kimsubong in /Users/kimsubong/Desktop/GameGameBackend/auth-service)
-2024-07-31T18:19:50.900+09:00  INFO 85005 --- [auth-service] [    Test worker] c.p.a.AuthServiceApplicationTests        : No active profile set, falling back to 1 default profile: "default"
-2024-07-31T18:19:51.591+09:00  INFO 85005 --- [auth-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-07-31T18:19:51.679+09:00  INFO 85005 --- [auth-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 1 JPA repository interface.
-2024-07-31T18:19:51.806+09:00  INFO 85005 --- [auth-service] [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5d020a4c-9857-3587-a44f-10a1d2fde7ba
-2024-07-31T18:19:51.923+09:00  WARN 85005 --- [auth-service] [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-07-31T18:19:51.924+09:00  WARN 85005 --- [auth-service] [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2024-07-31T18:19:51.995+09:00  INFO 85005 --- [auth-service] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-07-31T18:19:52.024+09:00  INFO 85005 --- [auth-service] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-07-31T18:19:52.046+09:00  INFO 85005 --- [auth-service] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-07-31T18:19:52.098+09:00  INFO 85005 --- [auth-service] [    Test worker] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
-2024-07-31T18:19:52.212+09:00  INFO 85005 --- [auth-service] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-07-31T18:19:52.222+09:00  INFO 85005 --- [auth-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-07-31T18:19:52.891+09:00  INFO 85005 --- [auth-service] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3ffa0f38
-2024-07-31T18:19:52.893+09:00  INFO 85005 --- [auth-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-07-31T18:19:52.937+09:00  WARN 85005 --- [auth-service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-07-31T18:19:52.938+09:00  WARN 85005 --- [auth-service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-07-31T18:19:53.392+09:00  INFO 85005 --- [auth-service] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-07-31T18:19:53.555+09:00  INFO 85005 --- [auth-service] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-07-31T18:19:53.734+09:00  INFO 85005 --- [auth-service] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
-2024-07-31T18:19:53.748+09:00  WARN 85005 --- [auth-service] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-07-31T18:19:54.082+09:00  INFO 85005 --- [auth-service] [    Test worker] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
-2024-07-31T18:19:54.101+09:00  WARN 85005 --- [auth-service] [    Test worker] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2024-07-31T18:19:54.111+09:00  INFO 85005 --- [auth-service] [    Test worker] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2024-07-31T18:19:54.125+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2024-07-31T18:19:54.127+09:00  INFO 85005 --- [auth-service] [    Test worker] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2024-07-31T18:19:54.131+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Disable delta property : true
-2024-07-31T18:19:54.131+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2024-07-31T18:19:54.131+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2024-07-31T18:19:54.131+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2024-07-31T18:19:54.131+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2024-07-31T18:19:54.131+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2024-07-31T18:19:54.131+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2024-07-31T18:19:54.290+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : The response status is 200
-2024-07-31T18:19:54.291+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
-2024-07-31T18:19:54.292+09:00  INFO 85005 --- [auth-service] [    Test worker] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2024-07-31T18:19:54.293+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1722417594292 with initial instances count: 1
-2024-07-31T18:19:54.295+09:00  INFO 85005 --- [auth-service] [    Test worker] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application AUTH-SERVICE with eureka with status UP
-2024-07-31T18:19:54.295+09:00  INFO 85005 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1722417594295, current=UP, previous=STARTING]
-2024-07-31T18:19:54.295+09:00  INFO 85005 --- [auth-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AUTH-SERVICE/192.168.219.100:auth-service:8083: registering service...
-2024-07-31T18:19:54.311+09:00  INFO 85005 --- [auth-service] [    Test worker] c.p.a.AuthServiceApplicationTests        : Started AuthServiceApplicationTests in 3.666 seconds (process running for 4.585)
-2024-07-31T18:19:54.319+09:00  INFO 85005 --- [auth-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AUTH-SERVICE/192.168.219.100:auth-service:8083 - registration status: 204
+2024-08-02T11:39:56.116+09:00  INFO 81141 --- [auth-service] [    Test worker] c.p.a.AuthServiceApplicationTests        : Starting AuthServiceApplicationTests using Java 17.0.10 with PID 81141 (started by kimsubong in /Users/kimsubong/Desktop/GameGameBackend/auth-service)
+2024-08-02T11:39:56.116+09:00  INFO 81141 --- [auth-service] [    Test worker] c.p.a.AuthServiceApplicationTests        : No active profile set, falling back to 1 default profile: "default"
+2024-08-02T11:39:56.433+09:00  INFO 81141 --- [auth-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-02T11:39:56.489+09:00  INFO 81141 --- [auth-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interface.
+2024-08-02T11:39:56.580+09:00  INFO 81141 --- [auth-service] [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5d020a4c-9857-3587-a44f-10a1d2fde7ba
+2024-08-02T11:39:56.716+09:00  WARN 81141 --- [auth-service] [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-08-02T11:39:56.717+09:00  WARN 81141 --- [auth-service] [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-08-02T11:39:56.773+09:00  INFO 81141 --- [auth-service] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-02T11:39:56.798+09:00  INFO 81141 --- [auth-service] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-02T11:39:56.810+09:00  INFO 81141 --- [auth-service] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-02T11:39:56.846+09:00  INFO 81141 --- [auth-service] [    Test worker] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2024-08-02T11:39:56.931+09:00  INFO 81141 --- [auth-service] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-02T11:39:56.942+09:00  INFO 81141 --- [auth-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-02T11:39:57.333+09:00  INFO 81141 --- [auth-service] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4e614370
+2024-08-02T11:39:57.334+09:00  INFO 81141 --- [auth-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-02T11:39:57.395+09:00  WARN 81141 --- [auth-service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-02T11:39:57.396+09:00  WARN 81141 --- [auth-service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-08-02T11:39:57.740+09:00  INFO 81141 --- [auth-service] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-02T11:39:57.862+09:00  INFO 81141 --- [auth-service] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-02T11:39:58.013+09:00  INFO 81141 --- [auth-service] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2024-08-02T11:39:58.026+09:00  WARN 81141 --- [auth-service] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-02T11:39:58.343+09:00  INFO 81141 --- [auth-service] [    Test worker] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2024-08-02T11:39:58.359+09:00  WARN 81141 --- [auth-service] [    Test worker] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-08-02T11:39:58.368+09:00  INFO 81141 --- [auth-service] [    Test worker] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-08-02T11:39:58.376+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-08-02T11:39:58.378+09:00  INFO 81141 --- [auth-service] [    Test worker] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-08-02T11:39:58.382+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Disable delta property : true
+2024-08-02T11:39:58.382+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-08-02T11:39:58.382+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-08-02T11:39:58.382+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-08-02T11:39:58.382+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-08-02T11:39:58.382+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-08-02T11:39:58.382+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-08-02T11:39:58.529+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2024-08-02T11:39:58.530+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2024-08-02T11:39:58.530+09:00  INFO 81141 --- [auth-service] [    Test worker] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-08-02T11:39:58.533+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1722566398532 with initial instances count: 1
+2024-08-02T11:39:58.535+09:00  INFO 81141 --- [auth-service] [    Test worker] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application AUTH-SERVICE with eureka with status UP
+2024-08-02T11:39:58.535+09:00  INFO 81141 --- [auth-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1722566398535, current=UP, previous=STARTING]
+2024-08-02T11:39:58.536+09:00  INFO 81141 --- [auth-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AUTH-SERVICE/192.168.219.100:auth-service:8083: registering service...
+2024-08-02T11:39:58.553+09:00  INFO 81141 --- [auth-service] [    Test worker] c.p.a.AuthServiceApplicationTests        : Started AuthServiceApplicationTests in 2.556 seconds (process running for 3.093)
+2024-08-02T11:39:58.557+09:00  INFO 81141 --- [auth-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_AUTH-SERVICE/192.168.219.100:auth-service:8083 - registration status: 204
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
