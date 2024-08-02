@@ -36,7 +36,7 @@ public class QuizController {
 
     @PostMapping("/checkAnswer")
     public ApiSuccessResponse<?> checkAnswer(@RequestBody QuizCheckAnswerRequest request,
-                                             @RequestHeader("Authorization") String token) {
+                                             @RequestHeader(name = "Authorization") String token) {
 
         return ApiSuccessResponse.from(quizService.checkAnswer(request, token));
     }
