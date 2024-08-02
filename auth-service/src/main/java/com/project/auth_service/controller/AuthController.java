@@ -6,11 +6,13 @@ import com.project.auth_service.dto.RegisterRequest;
 import com.project.auth_service.dto.UserResponse;
 import com.project.auth_service.dto.UserTokenResponse;
 import com.project.auth_service.jwt.JwtUtil;
+import com.project.auth_service.model.User;
 import com.project.auth_service.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
@@ -40,9 +42,9 @@ public class AuthController {
     }
 
     @PostMapping("/me")
-    public ResponseEntity<?> getCurrentUser(@RequestHeader("Authorization") String token) {
+    public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal User user) {
 
-        return ResponseEntity.ok().body(jwtUtil.getEmailFromJwt(token));
+        return ResponseEntity.ok().body(user.getUsername());
     }
 
 
