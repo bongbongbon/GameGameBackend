@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@FeignClient(name = "AUTH-SERVICE")
+@FeignClient(name = "auth-service")
 public interface UserClient {
 
     @PostMapping("/api/auth/me")
-    String getCurrentUser(@RequestHeader("Authorization") String token);
+    String getCurrentUser(@RequestHeader(name = "Authorization") String token);
 }
