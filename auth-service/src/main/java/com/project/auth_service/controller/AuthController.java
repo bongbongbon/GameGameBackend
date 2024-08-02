@@ -42,9 +42,9 @@ public class AuthController {
     }
 
     @PostMapping("/me")
-    public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal User user) {
+    public ResponseEntity<?> getCurrentUser(@RequestHeader("Authorization") String token) {
 
-        return ResponseEntity.ok().body(user.getUsername());
+        return ResponseEntity.ok().body(jwtUtil.getEmailFromJwt(token));
     }
 
 
