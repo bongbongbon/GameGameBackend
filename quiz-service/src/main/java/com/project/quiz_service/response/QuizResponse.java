@@ -21,7 +21,7 @@ public class QuizResponse {
 
     private String content;
 
-    private String answer;
+    private String userAnswer;
 
     public static QuizResponse fromEntity(Quiz quiz) {
         return QuizResponse.builder()
@@ -29,7 +29,7 @@ public class QuizResponse {
                 .category(quiz.getCategory())
                 .title(quiz.getTitle())
                 .content(quiz.getContent())
-                .answer(quiz.getAnswer())
+                .userAnswer(quiz.getAnswer())
                 .build();
     }
 

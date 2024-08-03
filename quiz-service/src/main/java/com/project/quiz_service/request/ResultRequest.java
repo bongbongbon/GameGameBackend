@@ -13,5 +13,7 @@ public class ResultRequest {
 
     private String username;
 
+    private String userAnswer;
+
     private Boolean isCorrect;
 }

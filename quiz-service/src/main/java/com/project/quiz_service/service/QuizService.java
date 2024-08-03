@@ -67,6 +67,7 @@ public class QuizService {
         ResultRequest resultRequest = ResultRequest.builder()
                 .quizId(request.getQuizId())
                 .username(userClient.getCurrentUser(token))
+                .userAnswer(request.getUserAnswer())
                 .isCorrect(isCorrect)
                 .build();
 

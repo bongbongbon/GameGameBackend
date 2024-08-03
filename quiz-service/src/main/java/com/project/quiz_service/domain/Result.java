@@ -17,9 +17,13 @@ public class Result extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long quizId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "quiz_id")
+    private Quiz quiz;
 
     private String username;
+
+    private String userAnswer;
 
     private Boolean isCorrect;
 

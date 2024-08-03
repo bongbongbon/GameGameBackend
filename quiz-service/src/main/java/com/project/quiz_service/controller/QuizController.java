@@ -4,6 +4,7 @@ import com.project.quiz_service.request.QuizCheckAnswerRequest;
 import com.project.quiz_service.request.QuizCreateRequest;
 import com.project.quiz_service.response.ApiSuccessResponse;
 import com.project.quiz_service.service.QuizService;
+import com.project.quiz_service.service.ResultService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class QuizController {
 
     private final QuizService quizService;
+    private final ResultService resultService;
 
     @PostMapping("/create")
     public ApiSuccessResponse<?> createQuiz(@RequestBody QuizCreateRequest request,
@@ -39,6 +41,17 @@ public class QuizController {
                                              @RequestHeader(name = "Authorization") String token) {
 
         return ApiSuccessResponse.from(quizService.checkAnswer(request, token));
+    }
+
+
+    @GetMapping("/myResult")
+    public ApiSuccessResponse<?> getMyResultList(@RequestHeader(name = "Authorization")String token,
+                                                 @RequestParam(name = "page") int page,
+                                                 @RequestParam(name = "size") int size) {
+
+
+
+        return ApiSuccessResponse.from(resultService.getMyResultList(token, page, size));
     }
 
 
