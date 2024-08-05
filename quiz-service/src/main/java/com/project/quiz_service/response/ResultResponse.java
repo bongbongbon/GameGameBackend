@@ -29,10 +29,12 @@ public class ResultResponse {
     public static ResultResponse fromEntity(Result result) {
 
         return ResultResponse.builder()
+                .id(result.getId())
                 .quizResponse(QuizResponse.fromEntity(result.getQuiz()))
                 .userAnswer(result.getUserAnswer())
                 .username(result.getUsername())
                 .isCorrect(result.getIsCorrect())
+                .createdAt(result.getCreatedAt())
                 .build();
     }
 
