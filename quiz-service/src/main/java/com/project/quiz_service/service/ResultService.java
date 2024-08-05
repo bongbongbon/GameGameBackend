@@ -41,16 +41,13 @@ public class ResultService {
         resultRepository.save(result);
     }
 
-    public List<ResultResponse> getMyResultList(String token, int page, int size) {
+    public Page<Result> getMyResultList(String token, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size);
 
         String loginUser = userClient.getCurrentUser(token);
 
-        Page<Result> resultPage = resultRepository.findByUsernameOrderByCreatedAtAsc(loginUser, pageable);
-        List<Result> resultList = resultPage.getContent();
-
-        return ResultResponse.fromEntityList(resultList);
+        return resultRepository.findByUsernameOrderByCreatedAtAsc(loginUser, pageable);
     }
 
 
