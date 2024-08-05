@@ -5,6 +5,7 @@ import com.project.quiz_service.domain.Result;
 import com.project.quiz_service.repository.ResultRepository;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,10 +16,15 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ResultResponse {
 
+    private Long id;
     private QuizResponse quizResponse;
     private String userAnswer;
     private String username;
     private Boolean isCorrect;
+    private LocalDateTime createdAt;
+
+
+
 
     public static ResultResponse fromEntity(Result result) {
 

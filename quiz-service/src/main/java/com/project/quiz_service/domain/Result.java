@@ -30,4 +30,5 @@ public class Result extends BaseEntity{
 
     private Boolean isCorrect;
 
+
 }

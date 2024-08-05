@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.project.gamegame.GamegameApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-05T09:19:07" hostname="gimsubong-ui-MacBookAir.local" time="0.373">
+<testsuite name="com.project.gamegame.GamegameApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-08-05T09:59:39" hostname="gimsubong-ui-MacBookAir.local" time="0.961">
   <properties/>
-  <testcase name="contextLoads()" classname="com.project.gamegame.GamegameApplicationTests" time="0.373"/>
-  <system-out><![CDATA[18:19:06.550 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.project.gamegame.GamegameApplicationTests]: GamegameApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:19:06.587 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.project.gamegame.GamegameApplication for test class com.project.gamegame.GamegameApplicationTests
+  <testcase name="contextLoads()" classname="com.project.gamegame.GamegameApplicationTests" time="0.961"/>
+  <system-out><![CDATA[18:59:38.505 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.project.gamegame.GamegameApplicationTests]: GamegameApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:59:38.542 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.project.gamegame.GamegameApplication for test class com.project.gamegame.GamegameApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -14,9 +14,9 @@
 
  :: Spring Boot ::                (v3.3.2)
 
-2024-08-05T18:19:06.731+09:00  INFO 81028 --- [gamegame] [    Test worker] c.p.gamegame.GamegameApplicationTests    : Starting GamegameApplicationTests using Java 17.0.10 with PID 81028 (started by kimsubong in /Users/kimsubong/Desktop/GameGameBackend)
-2024-08-05T18:19:06.732+09:00  INFO 81028 --- [gamegame] [    Test worker] c.p.gamegame.GamegameApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2024-08-05T18:19:07.125+09:00  INFO 81028 --- [gamegame] [    Test worker] c.p.gamegame.GamegameApplicationTests    : Started GamegameApplicationTests in 0.48 seconds (process running for 0.964)
+2024-08-05T18:59:38.697+09:00  INFO 1183 --- [gamegame] [    Test worker] c.p.gamegame.GamegameApplicationTests    : Starting GamegameApplicationTests using Java 17.0.10 with PID 1183 (started by kimsubong in /Users/kimsubong/Desktop/GameGameBackend)
+2024-08-05T18:59:38.697+09:00  INFO 1183 --- [gamegame] [    Test worker] c.p.gamegame.GamegameApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2024-08-05T18:59:39.300+09:00  INFO 1183 --- [gamegame] [    Test worker] c.p.gamegame.GamegameApplicationTests    : Started GamegameApplicationTests in 0.696 seconds (process running for 1.302)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

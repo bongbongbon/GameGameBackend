@@ -41,14 +41,19 @@ public class ResultService {
         resultRepository.save(result);
     }
 
-    public Page<Result> getMyResultList(String token, int page, int size) {
+    public Page<ResultResponse> getMyResultList(String token, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size);
 
         String loginUser = userClient.getCurrentUser(token);
 
-        return resultRepository.findByUsernameOrderByCreatedAtAsc(loginUser, pageable);
+        Page<Result> resultPage = resultRepository.findByUsernameOrderByCreatedAtAsc(loginUser, pageable);
+
+
+        return resultPage.map(ResultResponse::fromEntity);
     }
+
+
 
 
 }
