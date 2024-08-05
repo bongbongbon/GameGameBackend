@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ResultRepository extends JpaRepository<Result, Long> {
-    Page<Result> findByUsernameOrderByCreatedAtAsc(String username, Pageable pageable);
+    Page<Result> findByUsernameOrderByCreatedAtDesc(String username, Pageable pageable);
 
 }

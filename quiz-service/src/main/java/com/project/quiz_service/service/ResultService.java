@@ -47,7 +47,7 @@ public class ResultService {
 
         String loginUser = userClient.getCurrentUser(token);
 
-        Page<Result> resultPage = resultRepository.findByUsernameOrderByCreatedAtAsc(loginUser, pageable);
+        Page<Result> resultPage = resultRepository.findByUsernameOrderByCreatedAtDesc(loginUser, pageable);
 
 
         return resultPage.map(ResultResponse::fromEntity);
