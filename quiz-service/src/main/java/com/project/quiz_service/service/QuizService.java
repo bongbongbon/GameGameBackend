@@ -18,6 +18,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
 @Service
 @RequiredArgsConstructor
 public class QuizService {
@@ -107,21 +110,20 @@ public class QuizService {
 
     // 조회수 증가
     public void incrementViewCount(Long quizId) {
-
         Quiz quiz = quizRepository.findById(quizId)
                 .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
 
         String key = "quizId: " + quizId;
         String viewsStr = redisService.getData(key);
 
+        // 첫 조회에 레디스 저장 로직
         if (viewsStr == null) {
-            // 처음 조회할 때 Redis에 조회수 설정
-            redisService.setData(key, String.valueOf(quiz.getViews()));
+            viewsStr = String.valueOf(quiz.getViews());
         }
 
         int views = Integer.parseInt(viewsStr) + 1;
 
-        redisService.setData("quizId: " + quizId, String.valueOf(views)); // 레디스 데이터 세팅
+        redisService.setData(key, String.valueOf(views));
     }
 
     // 조회수 가져오기
@@ -132,6 +134,21 @@ public class QuizService {
         return view;
     }
 
+    // 주기적으로 Redis와 DB 동기화
+    @Scheduled(fixedRate = 60000) // 1분마다 실행
+    public void syncRedisToDb() {
+        Set<String> keys = redisService.getKeys("quizId: *");
+
+        for (String key : keys) {
+            Long quizId = Long.parseLong(key.split(": ")[1]);
+            int views = getViewCount(quizId);
+
+            Quiz quiz = quizRepository.findById(quizId)
+                    .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
+            quiz.setViews(views);
+            quizRepository.save(quiz);
+        }
+    }
 
 
 }
