@@ -36,6 +36,7 @@ public class ResultService {
                 .quiz(quiz)
                 .username(request.getUsername())
                 .isCorrect(request.getIsCorrect())
+                .userAnswer(request.getUserAnswer())
                 .build();
 
         resultRepository.save(result);
