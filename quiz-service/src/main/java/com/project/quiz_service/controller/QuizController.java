@@ -1,7 +1,7 @@
 package com.project.quiz_service.controller;
 
 import com.project.quiz_service.request.QuizCheckAnswerRequest;
-import com.project.quiz_service.request.QuizCreateRequest;
+import com.project.quiz_service.request.QuizRequest;
 import com.project.quiz_service.response.ApiSuccessResponse;
 import com.project.quiz_service.service.QuizService;
 import com.project.quiz_service.service.ResultService;
@@ -17,7 +17,7 @@ public class QuizController {
     private final ResultService resultService;
 
     @PostMapping("/create")
-    public ApiSuccessResponse<?> createQuiz(@RequestBody QuizCreateRequest request,
+    public ApiSuccessResponse<?> createQuiz(@RequestBody QuizRequest request,
                                             @RequestHeader("Authorization") String token) {
         quizService.createQuiz(request, token);
         return ApiSuccessResponse.NO_DATA_RESPONSE;
@@ -33,6 +33,18 @@ public class QuizController {
     @GetMapping("/get/{id}")
     public ApiSuccessResponse<?> getQuiz(@PathVariable(name = "id") Long quizId) {
         return ApiSuccessResponse.from(quizService.getQuiz(quizId));
+    }
+
+    @PutMapping("/update/{id}")
+    public ApiSuccessResponse<?> updateQuiz(@RequestBody QuizRequest quizRequest,
+                                            @PathVariable(name = "id") Long quizId) {
+        return ApiSuccessResponse.from(quizService.updateQuiz(quizRequest, quizId));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ApiSuccessResponse<?> deleteQuiz(@PathVariable(name = "id") Long quizId) {
+            quizService.deleteQuiz(quizId);
+        return ApiSuccessResponse.NO_DATA_RESPONSE;
     }
 
 

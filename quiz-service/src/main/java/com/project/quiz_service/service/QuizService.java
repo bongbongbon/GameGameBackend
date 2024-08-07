@@ -5,13 +5,17 @@ import com.project.quiz_service.domain.Quiz;
 import com.project.quiz_service.exception.CustomException;
 import com.project.quiz_service.repository.QuizRepository;
 import com.project.quiz_service.request.QuizCheckAnswerRequest;
-import com.project.quiz_service.request.QuizCreateRequest;
+import com.project.quiz_service.request.QuizRequest;
 import com.project.quiz_service.request.ResultRequest;
 import com.project.quiz_service.response.QuizResponse;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,9 +25,10 @@ public class QuizService {
     private final QuizRepository quizRepository;
     private final UserClient userClient;
     private final ResultService resultService;
+    private final RedisService redisService;
 
     // 퀴즈 만들기
-    public void createQuiz(QuizCreateRequest request, String token) {
+    public void createQuiz(QuizRequest request, String token) {
 
         Quiz quiz = Quiz.builder()
                 .category(request.getCategory())
@@ -35,18 +40,40 @@ public class QuizService {
 
         quizRepository.save(quiz);
     }
+    public QuizResponse updateQuiz(QuizRequest quizRequest, Long quizId) {
+
+        Quiz quiz = quizRepository.findById(quizId)
+                .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
+
+        quiz.setCategory(quizRequest.getCategory());
+        quiz.setTitle(quizRequest.getTitle());
+        quiz.setAnswer(quizRequest.getAnswer());
+
+
+        return QuizResponse.fromEntity(quiz);
+    }
+
+    // 퀴즈 삭제
+    public void deleteQuiz(Long quizId) {
+    }
 
     // 퀴즈 전체조회(페이징 처리)
     public Page<Quiz> getQuizzes(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
         return quizRepository.findAll(pageable);
     }
 
     // 퀴즈 조회
     public QuizResponse getQuiz(Long quizId) {
 
+        // 레디스 조회수 증가 로직
+        incrementViewCount(quizId);
+
+        // 레디스에서 가져온 조회수
+        int redisGetView = getViewCount(quizId);
+
         return QuizResponse.fromEntity(quizRepository.findById(quizId)
-                .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND));
+                .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND), redisGetView);
     }
 
     // 정답유무 확인
@@ -76,6 +103,33 @@ public class QuizService {
         resultService.createResult(resultRequest);
 
         return isCorrect;
+    }
+
+    // 조회수 증가
+    public void incrementViewCount(Long quizId) {
+
+        Quiz quiz = quizRepository.findById(quizId)
+                .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
+
+        String key = "quizId: " + quizId;
+        String viewsStr = redisService.getData(key);
+
+        if (viewsStr == null) {
+            // 처음 조회할 때 Redis에 조회수 설정
+            redisService.setData(key, String.valueOf(quiz.getViews()));
+        }
+
+        int views = Integer.parseInt(viewsStr) + 1;
+
+        redisService.setData("quizId: " + quizId, String.valueOf(views)); // 레디스 데이터 세팅
+    }
+
+    // 조회수 가져오기
+    public int getViewCount(Long quizId) {
+        String key = "quizId: " + quizId;
+        String count = redisService.getData(key);
+        int view = Integer.parseInt(count);
+        return view;
     }
 
 
