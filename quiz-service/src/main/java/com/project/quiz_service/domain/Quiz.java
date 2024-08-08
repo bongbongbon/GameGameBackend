@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -30,4 +32,7 @@ public class Quiz extends BaseEntity{
     private String answer;
 
     private int views;
+
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Result> results; // 퀴즈와 연관된 결과들
 }

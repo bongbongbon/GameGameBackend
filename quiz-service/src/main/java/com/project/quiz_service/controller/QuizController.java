@@ -1,5 +1,8 @@
 package com.project.quiz_service.controller;
 
+import com.project.quiz_service.domain.Quiz;
+import com.project.quiz_service.exception.CustomException;
+import com.project.quiz_service.repository.QuizRepository;
 import com.project.quiz_service.request.QuizCheckAnswerRequest;
 import com.project.quiz_service.request.QuizRequest;
 import com.project.quiz_service.response.ApiSuccessResponse;
@@ -15,6 +18,7 @@ public class QuizController {
 
     private final QuizService quizService;
     private final ResultService resultService;
+    private final QuizRepository quizRepository;
 
     @PostMapping("/create")
     public ApiSuccessResponse<?> createQuiz(@RequestBody QuizRequest request,
@@ -44,7 +48,12 @@ public class QuizController {
 
     @DeleteMapping("/delete/{id}")
     public ApiSuccessResponse<?> deleteQuiz(@PathVariable(name = "id") Long quizId) {
-            quizService.deleteQuiz(quizId);
+
+        Quiz quiz = quizRepository.findById(quizId)
+                        .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
+
+            quizRepository.delete(quiz); // 퀴즈 삭제 시 연관된 결과들도 자동 삭제됨
+
         return ApiSuccessResponse.NO_DATA_RESPONSE;
     }
 
