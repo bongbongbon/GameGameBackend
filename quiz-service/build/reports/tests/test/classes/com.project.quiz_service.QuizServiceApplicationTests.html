@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.854s</div>
+<div class="counter">0.373s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">contextLoads()</td>
-<td class="success">0.854s</td>
+<td class="success">0.373s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,8 +87,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>14:53:28.502 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.project.quiz_service.QuizServiceApplicationTests]: QuizServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-14:53:28.559 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.project.quiz_service.QuizServiceApplication for test class com.project.quiz_service.QuizServiceApplicationTests
+<pre>15:14:33.819 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.project.quiz_service.QuizServiceApplicationTests]: QuizServiceApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:14:33.901 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.project.quiz_service.QuizServiceApplication for test class com.project.quiz_service.QuizServiceApplicationTests
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -99,50 +99,50 @@
 
  :: Spring Boot ::                (v3.3.2)
 
-2024-08-08T14:53:28.763+09:00  INFO 99464 --- [quiz-service] [    Test worker] c.p.q.QuizServiceApplicationTests        : Starting QuizServiceApplicationTests using Java 17.0.10 with PID 99464 (started by kimsubong in /Users/kimsubong/Desktop/GameGameBackend/quiz-service)
-2024-08-08T14:53:28.764+09:00  INFO 99464 --- [quiz-service] [    Test worker] c.p.q.QuizServiceApplicationTests        : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-08-08T14:53:29.128+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2024-08-08T14:53:29.128+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-08-08T14:53:29.137+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
-2024-08-08T14:53:29.284+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2024-08-08T14:53:29.285+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-08-08T14:53:29.355+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 2 JPA repository interfaces.
-2024-08-08T14:53:29.360+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2024-08-08T14:53:29.360+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2024-08-08T14:53:29.364+09:00  INFO 99464 --- [quiz-service] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.project.quiz_service.repository.QuizRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2024-08-08T14:53:29.364+09:00  INFO 99464 --- [quiz-service] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.project.quiz_service.repository.ResultRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2024-08-08T14:53:29.364+09:00  INFO 99464 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
-2024-08-08T14:53:29.520+09:00  INFO 99464 --- [quiz-service] [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8e00da3a-c6f5-3f56-9953-b8b3807e8b78
-2024-08-08T14:53:29.663+09:00  WARN 99464 --- [quiz-service] [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
-2024-08-08T14:53:29.665+09:00  WARN 99464 --- [quiz-service] [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
-2024-08-08T14:53:29.740+09:00  INFO 99464 --- [quiz-service] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-08-08T14:53:29.763+09:00  INFO 99464 --- [quiz-service] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-08-08T14:53:29.776+09:00  INFO 99464 --- [quiz-service] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-08-08T14:53:29.932+09:00  INFO 99464 --- [quiz-service] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-08-08T14:53:29.943+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-08-08T14:53:30.682+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5d98364c
-2024-08-08T14:53:30.689+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-08-08T14:53:30.751+09:00  WARN 99464 --- [quiz-service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-08-08T14:53:30.756+09:00  WARN 99464 --- [quiz-service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-08-08T14:53:31.503+09:00  INFO 99464 --- [quiz-service] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-08-08T14:53:31.738+09:00  INFO 99464 --- [quiz-service] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-08-08T14:53:32.044+09:00  WARN 99464 --- [quiz-service] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-08-08T14:53:33.286+09:00  INFO 99464 --- [quiz-service] [    Test worker] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
-2024-08-08T14:53:33.335+09:00  WARN 99464 --- [quiz-service] [    Test worker] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-2024-08-08T14:53:33.404+09:00  INFO 99464 --- [quiz-service] [    Test worker] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2024-08-08T14:53:33.427+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2024-08-08T14:53:33.432+09:00  INFO 99464 --- [quiz-service] [    Test worker] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
-2024-08-08T14:53:33.435+09:00  WARN 99464 --- [quiz-service] [    Test worker] c.n.d.s.r.aws.ConfigClusterResolver      : Invalid eureka server URI: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZON}/; removing from the server pool
-2024-08-08T14:53:33.435+09:00 ERROR 99464 --- [quiz-service] [    Test worker] c.n.d.s.r.aws.ConfigClusterResolver      : Cannot resolve to any endpoints from provided configuration: {defaultZone=[${EUREKA_CLIENT_SERVICEURL_DEFAULTZON}/]}
-2024-08-08T14:53:33.435+09:00 ERROR 99464 --- [quiz-service] [    Test worker] c.n.d.s.transport.EurekaHttpClients      : Initial resolution of Eureka server endpoints failed. Check ConfigClusterResolver logs for more info
-2024-08-08T14:53:33.448+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Disable delta property : true
-2024-08-08T14:53:33.448+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
-2024-08-08T14:53:33.448+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
-2024-08-08T14:53:33.448+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Application is null : false
-2024-08-08T14:53:33.448+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
-2024-08-08T14:53:33.448+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
-2024-08-08T14:53:33.448+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
-2024-08-08T14:53:33.455+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_QUIZ-SERVICE/172.30.1.77:quiz-service:8082 - was unable to refresh its cache! This periodic background refresh will be retried in 5000 seconds. status = There is no known eureka server; cluster server list is empty stacktrace = com.netflix.discovery.shared.transport.TransportException: There is no known eureka server; cluster server list is empty
+2024-08-08T15:14:34.218+09:00  INFO 10455 --- [quiz-service] [    Test worker] c.p.q.QuizServiceApplicationTests        : Starting QuizServiceApplicationTests using Java 17.0.10 with PID 10455 (started by kimsubong in /Users/kimsubong/Desktop/GameGameBackend/quiz-service)
+2024-08-08T15:14:34.219+09:00  INFO 10455 --- [quiz-service] [    Test worker] c.p.q.QuizServiceApplicationTests        : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-08-08T15:14:34.530+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-08-08T15:14:34.530+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-08-08T15:14:34.539+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2024-08-08T15:14:34.640+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-08-08T15:14:34.641+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-08T15:14:34.710+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 2 JPA repository interfaces.
+2024-08-08T15:14:34.714+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-08-08T15:14:34.714+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-08-08T15:14:34.717+09:00  INFO 10455 --- [quiz-service] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.project.quiz_service.repository.QuizRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-08-08T15:14:34.718+09:00  INFO 10455 --- [quiz-service] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.project.quiz_service.repository.ResultRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2024-08-08T15:14:34.718+09:00  INFO 10455 --- [quiz-service] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2024-08-08T15:14:34.867+09:00  INFO 10455 --- [quiz-service] [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8e00da3a-c6f5-3f56-9953-b8b3807e8b78
+2024-08-08T15:14:35.011+09:00  WARN 10455 --- [quiz-service] [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2024-08-08T15:14:35.013+09:00  WARN 10455 --- [quiz-service] [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2024-08-08T15:14:35.102+09:00  INFO 10455 --- [quiz-service] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-08T15:14:35.145+09:00  INFO 10455 --- [quiz-service] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-08T15:14:35.158+09:00  INFO 10455 --- [quiz-service] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-08T15:14:35.369+09:00  INFO 10455 --- [quiz-service] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-08T15:14:35.392+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-08-08T15:14:36.099+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@21ba0d33
+2024-08-08T15:14:36.101+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-08-08T15:14:36.152+09:00  WARN 10455 --- [quiz-service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-08T15:14:36.154+09:00  WARN 10455 --- [quiz-service] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-08-08T15:14:36.777+09:00  INFO 10455 --- [quiz-service] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-08T15:14:36.904+09:00  INFO 10455 --- [quiz-service] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-08T15:14:37.172+09:00  WARN 10455 --- [quiz-service] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-08T15:14:37.794+09:00  INFO 10455 --- [quiz-service] [    Test worker] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2024-08-08T15:14:37.816+09:00  WARN 10455 --- [quiz-service] [    Test worker] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-08-08T15:14:37.832+09:00  INFO 10455 --- [quiz-service] [    Test worker] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-08-08T15:14:37.843+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-08-08T15:14:37.847+09:00  INFO 10455 --- [quiz-service] [    Test worker] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2024-08-08T15:14:37.848+09:00  WARN 10455 --- [quiz-service] [    Test worker] c.n.d.s.r.aws.ConfigClusterResolver      : Invalid eureka server URI: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZON}/; removing from the server pool
+2024-08-08T15:14:37.848+09:00 ERROR 10455 --- [quiz-service] [    Test worker] c.n.d.s.r.aws.ConfigClusterResolver      : Cannot resolve to any endpoints from provided configuration: {defaultZone=[${EUREKA_CLIENT_SERVICEURL_DEFAULTZON}/]}
+2024-08-08T15:14:37.848+09:00 ERROR 10455 --- [quiz-service] [    Test worker] c.n.d.s.transport.EurekaHttpClients      : Initial resolution of Eureka server endpoints failed. Check ConfigClusterResolver logs for more info
+2024-08-08T15:14:37.851+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Disable delta property : true
+2024-08-08T15:14:37.852+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2024-08-08T15:14:37.852+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2024-08-08T15:14:37.852+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2024-08-08T15:14:37.852+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2024-08-08T15:14:37.852+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2024-08-08T15:14:37.852+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2024-08-08T15:14:37.854+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_QUIZ-SERVICE/172.30.1.77:quiz-service:8082 - was unable to refresh its cache! This periodic background refresh will be retried in 5000 seconds. status = There is no known eureka server; cluster server list is empty stacktrace = com.netflix.discovery.shared.transport.TransportException: There is no known eureka server; cluster server list is empty
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:108)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.getApplications(EurekaHttpClientDecorator.java:134)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$6.execute(EurekaHttpClientDecorator.java:137)
@@ -294,16 +294,16 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 
-2024-08-08T14:53:33.458+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Initial registry fetch from primary servers failed
-2024-08-08T14:53:33.459+09:00  WARN 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Using default backup registry implementation which does not do anything.
-2024-08-08T14:53:33.460+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Initial registry fetch from backup servers failed
-2024-08-08T14:53:33.462+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
-2024-08-08T14:53:33.465+09:00  INFO 99464 --- [quiz-service] [    Test worker] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
-2024-08-08T14:53:33.479+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1723096413468 with initial instances count: 0
-2024-08-08T14:53:33.499+09:00  INFO 99464 --- [quiz-service] [    Test worker] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application QUIZ-SERVICE with eureka with status UP
-2024-08-08T14:53:33.508+09:00  INFO 99464 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1723096413508, current=UP, previous=STARTING]
-2024-08-08T14:53:33.510+09:00  INFO 99464 --- [quiz-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_QUIZ-SERVICE/172.30.1.77:quiz-service:8082: registering service...
-2024-08-08T14:53:33.512+09:00  WARN 99464 --- [quiz-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_QUIZ-SERVICE/172.30.1.77:quiz-service:8082 - registration failed There is no known eureka server; cluster server list is empty
+2024-08-08T15:14:37.855+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Initial registry fetch from primary servers failed
+2024-08-08T15:14:37.855+09:00  WARN 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Using default backup registry implementation which does not do anything.
+2024-08-08T15:14:37.855+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Initial registry fetch from backup servers failed
+2024-08-08T15:14:37.856+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2024-08-08T15:14:37.857+09:00  INFO 10455 --- [quiz-service] [    Test worker] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2024-08-08T15:14:37.858+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1723097677857 with initial instances count: 0
+2024-08-08T15:14:37.860+09:00  INFO 10455 --- [quiz-service] [    Test worker] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application QUIZ-SERVICE with eureka with status UP
+2024-08-08T15:14:37.864+09:00  INFO 10455 --- [quiz-service] [    Test worker] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1723097677864, current=UP, previous=STARTING]
+2024-08-08T15:14:37.864+09:00  INFO 10455 --- [quiz-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_QUIZ-SERVICE/172.30.1.77:quiz-service:8082: registering service...
+2024-08-08T15:14:37.865+09:00  WARN 10455 --- [quiz-service] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_QUIZ-SERVICE/172.30.1.77:quiz-service:8082 - registration failed There is no known eureka server; cluster server list is empty
 
 com.netflix.discovery.shared.transport.TransportException: There is no known eureka server; cluster server list is empty
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:108) ~[eureka-client-2.0.3.jar:2.0.3]
@@ -321,7 +321,7 @@ com.netflix.discovery.shared.transport.TransportException: There is no known eur
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
 
-2024-08-08T14:53:33.516+09:00  WARN 99464 --- [quiz-service] [foReplicator-%d] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+2024-08-08T15:14:37.867+09:00  WARN 10455 --- [quiz-service] [foReplicator-%d] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
 
 com.netflix.discovery.shared.transport.TransportException: There is no known eureka server; cluster server list is empty
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:108) ~[eureka-client-2.0.3.jar:2.0.3]
@@ -339,7 +339,8 @@ com.netflix.discovery.shared.transport.TransportException: There is no known eur
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
 	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
 
-2024-08-08T14:53:33.553+09:00  INFO 99464 --- [quiz-service] [    Test worker] c.p.q.QuizServiceApplicationTests        : Started QuizServiceApplicationTests in 4.915 seconds (process running for 5.6)
+2024-08-08T15:14:37.911+09:00  INFO 10455 --- [quiz-service] [    Test worker] c.p.q.QuizServiceApplicationTests        : Started QuizServiceApplicationTests in 3.88 seconds (process running for 5.512)
+Hibernate: select q1_0.quiz_id,q1_0.answer,q1_0.category,q1_0.content,q1_0.created_at,q1_0.modified_at,q1_0.title,q1_0.username,q1_0.views from quiz q1_0 where q1_0.quiz_id=?
 </pre>
 </span>
 </div>
@@ -351,7 +352,7 @@ com.netflix.discovery.shared.transport.TransportException: There is no known eur
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.8</a> at 2024. 8. 8. 오후 2:53:38</p>
+<a href="http://www.gradle.org">Gradle 8.8</a> at 2024. 8. 8. 오후 3:14:42</p>
 </div>
 </div>
 </body>

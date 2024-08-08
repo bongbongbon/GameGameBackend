@@ -38,7 +38,8 @@ public class QuizController {
     @PutMapping("/update/{id}")
     public ApiSuccessResponse<?> updateQuiz(@RequestBody QuizRequest quizRequest,
                                             @PathVariable(name = "id") Long quizId) {
-        return ApiSuccessResponse.from(quizService.updateQuiz(quizRequest, quizId));
+        quizService.updateQuiz(quizRequest, quizId);
+        return ApiSuccessResponse.NO_DATA_RESPONSE;
     }
 
     @DeleteMapping("/delete/{id}")
