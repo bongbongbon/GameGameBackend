@@ -51,6 +51,7 @@ public class QuizService {
 
         quiz.setCategory(quizRequest.getCategory());
         quiz.setTitle(quizRequest.getTitle());
+        quiz.setCategory(quizRequest.getContent());
         quiz.setAnswer(quizRequest.getAnswer());
 
 
