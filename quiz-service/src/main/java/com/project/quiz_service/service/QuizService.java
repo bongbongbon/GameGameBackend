@@ -18,6 +18,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -58,6 +59,11 @@ public class QuizService {
 
     // 퀴즈 삭제
     public void deleteQuiz(Long quizId) {
+
+        Quiz quiz = quizRepository.findById(quizId)
+                .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
+
+        quizRepository.deleteById(quiz.getId());
     }
 
     // 퀴즈 전체조회(페이징 처리)
@@ -151,4 +157,10 @@ public class QuizService {
     }
 
 
+    public Page<Quiz> getAllMyQuizzes(String token, int page, int size) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
+
+        return quizRepository.findByUsernameContaining(userClient.getCurrentUser(token), pageable);
+    }
 }

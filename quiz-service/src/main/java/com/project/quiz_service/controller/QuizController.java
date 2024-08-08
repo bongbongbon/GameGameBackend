@@ -66,5 +66,12 @@ public class QuizController {
         return ApiSuccessResponse.from(resultService.getMyResultList(token, page, size));
     }
 
+    // page처리로 퀴즈 전부 가져오기
+    @GetMapping("/myQuizzes")
+    public ApiSuccessResponse<?> getAllMyQuizzes(@RequestHeader(name = "Authorization")String token,
+                                                 @RequestParam(name = "page") int page,
+                                                 @RequestParam(name = "size") int size) {
+        return ApiSuccessResponse.from(quizService.getAllMyQuizzes(token, page, size));
+    }
 
 }

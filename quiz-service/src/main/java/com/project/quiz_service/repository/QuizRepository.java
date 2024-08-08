@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface QuizRepository extends JpaRepository<Quiz, Long> {
     Page<Quiz> findAll(Pageable pageable);
+    Page<Quiz> findByUsernameContaining(String username, Pageable pageable);
+
 }
