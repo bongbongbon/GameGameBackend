@@ -15,6 +15,8 @@ public class QuizResponse {
 
     private Long id;
 
+    private String username;
+
     private String category;
 
     private String title;
@@ -28,6 +30,7 @@ public class QuizResponse {
     public static QuizResponse fromEntity(Quiz quiz) {
         return QuizResponse.builder()
                 .id(quiz.getId())
+                .username(quiz.getUsername())
                 .category(quiz.getCategory())
                 .title(quiz.getTitle())
                 .content(quiz.getContent())
@@ -40,6 +43,7 @@ public class QuizResponse {
     public static QuizResponse fromEntity(Quiz quiz, int redisGetView) {
         return QuizResponse.builder()
                 .id(quiz.getId())
+                .username(quiz.getUsername())
                 .category(quiz.getCategory())
                 .title(quiz.getTitle())
                 .content(quiz.getContent())
