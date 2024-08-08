@@ -23,7 +23,7 @@ public class QuizResponse {
 
     private String content;
 
-    private String userAnswer;
+    private String answer;
 
     private int views;
 
@@ -34,7 +34,7 @@ public class QuizResponse {
                 .category(quiz.getCategory())
                 .title(quiz.getTitle())
                 .content(quiz.getContent())
-                .userAnswer(quiz.getAnswer())
+                .answer(quiz.getAnswer())
                 .views(quiz.getViews())
                 .build();
     }
@@ -47,7 +47,7 @@ public class QuizResponse {
                 .category(quiz.getCategory())
                 .title(quiz.getTitle())
                 .content(quiz.getContent())
-                .userAnswer(quiz.getAnswer())
+                .answer(quiz.getAnswer())
                 .views(redisGetView)
                 .build();
     }
