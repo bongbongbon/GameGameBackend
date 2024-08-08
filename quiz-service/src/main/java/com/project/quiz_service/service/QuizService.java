@@ -54,6 +54,7 @@ public class QuizService {
         quiz.setCategory(quizRequest.getContent());
         quiz.setAnswer(quizRequest.getAnswer());
 
+        quizRepository.save(quiz);
 
         return QuizResponse.fromEntity(quiz);
     }
