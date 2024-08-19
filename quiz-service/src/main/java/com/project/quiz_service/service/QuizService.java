@@ -179,6 +179,7 @@ public class QuizService {
     }
 
     @Cacheable(cacheNames = "quizMyCache", key = "{ args[1], args[2] }")
+    @CacheEvict(cacheNames = "quizAllCache", allEntries = true)
     public Page<QuizResponse> getAllMyQuizzes(String token, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
