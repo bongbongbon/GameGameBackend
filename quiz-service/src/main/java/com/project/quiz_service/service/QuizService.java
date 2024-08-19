@@ -12,6 +12,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -41,6 +42,7 @@ public class QuizService {
 
     // 퀴즈 만들기
     @CachePut(cacheNames = "quizCache", key = "#result.id")
+    @CacheEvict(cacheNames = "quizAllCache", allEntries = true)
     public QuizResponse createQuiz(QuizRequest request, String token) {
 
         Quiz quiz = Quiz.builder()
@@ -55,6 +57,7 @@ public class QuizService {
     }
 
     @CachePut(cacheNames = "quizCache", key = "args[0]")
+    @CacheEvict(cacheNames = "quizAllCache", allEntries = true)
     public QuizResponse updateQuiz(Long quizId, QuizRequest quizRequest) {
 
         Quiz quiz = quizRepository.findById(quizId)
@@ -71,6 +74,7 @@ public class QuizService {
     }
 
     // 퀴즈 삭제
+    @CacheEvict(cacheNames = "quizAllCache", allEntries = true)
     public void deleteQuiz(Long quizId) {
 
         Quiz quiz = quizRepository.findById(quizId)
@@ -80,7 +84,7 @@ public class QuizService {
     }
 
     // 퀴즈 전체조회(페이징 처리)
-    @Cacheable(cacheNames = "quizGetAll", key = "{ args[0], args[1] }")
+    @Cacheable(cacheNames = "quizAllCache", key = "{ args[0], args[1] }")
     public Page<QuizResponse> getQuizzes(Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
         return quizRepository.findAll(pageable)
