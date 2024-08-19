@@ -178,12 +178,15 @@ public class QuizService {
         }
     }
 
-    @Cacheable(cacheNames = "quizSearch", key = "{ args[1], args[2] }")
-    public Page<Quiz> getAllMyQuizzes(String token, int page, int size) {
+    @Cacheable(cacheNames = "quizMyCache", key = "{ args[1], args[2] }")
+    public Page<QuizResponse> getAllMyQuizzes(String token, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
 
-        return quizRepository.findByUsernameContaining(userClient.getCurrentUser(token), pageable);
+        return quizRepository.findByUsernameContaining(userClient.getCurrentUser(token), pageable)
+                .map(QuizResponse::fromEntity);
     }
+
+
 
 }
