@@ -40,10 +40,10 @@ public class QuizController {
     }
 
     @PatchMapping("/update/{id}")
-    public ApiSuccessResponse<?> updateQuiz(@RequestBody QuizRequest quizRequest,
-                                            @PathVariable(name = "id") Long quizId) {
+    public ApiSuccessResponse<?> updateQuiz(@PathVariable(name = "id") Long quizId,
+                                            @RequestBody QuizRequest quizRequest) {
 
-        return ApiSuccessResponse.from(quizService.updateQuiz(quizRequest, quizId));
+        return ApiSuccessResponse.from(quizService.updateQuiz(quizId, quizRequest));
     }
 
     @DeleteMapping("/delete/{id}")
@@ -79,8 +79,8 @@ public class QuizController {
     // page처리로 퀴즈 전부 가져오기
     @GetMapping("/myQuizzes")
     public ApiSuccessResponse<?> getAllMyQuizzes(@RequestHeader(name = "Authorization")String token,
-                                                 @RequestParam(name = "page") int page,
-                                                 @RequestParam(name = "size") int size) {
+                                                 @RequestParam(name = "page") Integer page,
+                                                 @RequestParam(name = "size") Integer size) {
         return ApiSuccessResponse.from(quizService.getAllMyQuizzes(token, page, size));
     }
 

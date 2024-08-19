@@ -10,6 +10,10 @@ import com.project.quiz_service.request.ResultRequest;
 import com.project.quiz_service.response.QuizResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,9 +22,12 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -30,9 +37,11 @@ public class QuizService {
     private final UserClient userClient;
     private final ResultService resultService;
     private final RedisService redisService;
+    private final CacheManager cacheManager;
 
     // 퀴즈 만들기
-    public void createQuiz(QuizRequest request, String token) {
+    @CachePut(cacheNames = "quizCache", key = "#result.id")
+    public QuizResponse createQuiz(QuizRequest request, String token) {
 
         Quiz quiz = Quiz.builder()
                 .category(request.getCategory())
@@ -42,9 +51,11 @@ public class QuizService {
                 .answer(request.getAnswer())
                 .build();
 
-        quizRepository.save(quiz);
+        return QuizResponse.fromEntity(quizRepository.save(quiz));
     }
-    public QuizResponse updateQuiz(QuizRequest quizRequest, Long quizId) {
+
+    @CachePut(cacheNames = "quizCache", key = "args[0]")
+    public QuizResponse updateQuiz(Long quizId, QuizRequest quizRequest) {
 
         Quiz quiz = quizRepository.findById(quizId)
                 .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
@@ -69,22 +80,27 @@ public class QuizService {
     }
 
     // 퀴즈 전체조회(페이징 처리)
-    public Page<Quiz> getQuizzes(int page, int size) {
+    @Cacheable(cacheNames = "quizGetAll", key = "{ args[0], args[1] }")
+    public Page<QuizResponse> getQuizzes(Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
-        return quizRepository.findAll(pageable);
+        return quizRepository.findAll(pageable)
+                .map(QuizResponse::fromEntity);
     }
 
     // 퀴즈 조회
+    @Cacheable(cacheNames = "quizCache", key = "args[0]")
     public QuizResponse getQuiz(Long quizId) {
 
+        Quiz quiz = quizRepository.findById(quizId)
+                .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
+
         // 레디스 조회수 증가 로직
-        incrementViewCount(quizId);
+        incrementViewCount(quiz.getId());
 
         // 레디스에서 가져온 조회수
-        int redisGetView = getViewCount(quizId);
+        int redisGetView = getViewCount(quiz.getId());
 
-        return QuizResponse.fromEntity(quizRepository.findById(quizId)
-                .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND), redisGetView);
+        return QuizResponse.fromEntity(quiz, redisGetView);
     }
 
     // 정답유무 확인
@@ -158,11 +174,12 @@ public class QuizService {
         }
     }
 
-
+    @Cacheable(cacheNames = "quizSearch", key = "{ args[1], args[2] }")
     public Page<Quiz> getAllMyQuizzes(String token, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
 
         return quizRepository.findByUsernameContaining(userClient.getCurrentUser(token), pageable);
     }
+
 }

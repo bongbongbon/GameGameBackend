@@ -3,6 +3,7 @@ package com.project.quiz_service.response;
 import com.project.quiz_service.domain.Quiz;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,7 +12,7 @@ import java.util.stream.Collectors;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuizResponse {
+public class QuizResponse implements Serializable {
 
     private Long id;
 

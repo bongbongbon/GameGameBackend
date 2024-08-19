@@ -6,5 +6,16 @@
       <user-name>admin</user-name>
       <schema-mapping />
     </data-source>
+    <data-source name="0@localhost" uuid="42ab82f3-f1bf-481a-bf91-0c9b32544f27">
+      <database-info product="Redis Standalone" version="7.4.0" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.5" dbms="REDIS" exact-version="7.4.0" exact-driver-version="1.5" />
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>default</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
   </component>
 </project>
