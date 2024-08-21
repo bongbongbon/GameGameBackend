@@ -1,9 +1,12 @@
 package com.project.quiz_service.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -50,4 +53,5 @@ public class RedisService {
     public Set<String> getKeys(String pattern) {
         return stringRedisTemplate.keys(pattern);
     }
+
 }

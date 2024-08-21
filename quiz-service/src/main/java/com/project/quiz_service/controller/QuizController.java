@@ -83,4 +83,11 @@ public class QuizController {
         return ApiSuccessResponse.from(quizService.getAllMyQuizzes(token, page, size));
     }
 
+    // 1 ~ 10위 까지의 정답입력 랭킹
+    @GetMapping("/answerRanks")
+    public ApiSuccessResponse<?> getAnswerRanks() {
+
+        return ApiSuccessResponse.from(quizService.getMostAnswer());
+    }
+
 }

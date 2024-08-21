@@ -20,13 +20,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -39,6 +37,9 @@ public class QuizService {
     private final ResultService resultService;
     private final RedisService redisService;
     private final CacheManager cacheManager;
+    private final RankService rankService;
+
+
 
     // 퀴즈 만들기
     @CachePut(cacheNames = "quizCache", key = "#result.id")
@@ -120,7 +121,6 @@ public class QuizService {
             isCorrect = true;
         }
 
-
         // ResultRequest로 Result에 저장할 값 담기
         ResultRequest resultRequest = ResultRequest.builder()
                 .quizId(request.getQuizId())
@@ -129,9 +129,10 @@ public class QuizService {
                 .isCorrect(isCorrect)
                 .build();
 
-
         // ResultCreate하기
         resultService.createResult(resultRequest);
+
+        rankService.incrementQuizScore("quizAnswerRanks", QuizResponse.fromEntity(quiz), 1);
 
         return isCorrect;
     }
@@ -188,6 +189,12 @@ public class QuizService {
                 .map(QuizResponse::fromEntity);
     }
 
+
+    public List<QuizResponse> getMostAnswer() {
+        Set<QuizResponse> ranks = rankService.getTopQuizzes("quizAnswerRanks", 3);
+        if(ranks == null) return Collections.emptyList();
+        return ranks.stream().toList();
+    }
 
 
 }

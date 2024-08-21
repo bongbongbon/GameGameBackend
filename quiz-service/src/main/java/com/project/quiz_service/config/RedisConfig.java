@@ -1,5 +1,6 @@
 package com.project.quiz_service.config;
 
+import com.project.quiz_service.response.QuizResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,15 +19,19 @@ public class RedisConfig {
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-
         RedisTemplate<String, Object> template = new RedisTemplate<>();
-
         template.setConnectionFactory(redisConnectionFactory);
-        template.setDefaultSerializer(RedisSerializer.string());
-        template.setHashKeySerializer(RedisSerializer.string());
-        template.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
-        template.setValueSerializer(new GenericJackson2JsonRedisSerializer());
+        template.setKeySerializer(RedisSerializer.string());
+        template.setValueSerializer(RedisSerializer.java());
+        return template;
+    }
 
+    @Bean
+    public RedisTemplate<String, QuizResponse> quizRnakRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<String, QuizResponse> template = new RedisTemplate<>();
+        template.setConnectionFactory(redisConnectionFactory);
+        template.setKeySerializer(RedisSerializer.string());
+        template.setValueSerializer(RedisSerializer.json());
         return template;
     }
 
