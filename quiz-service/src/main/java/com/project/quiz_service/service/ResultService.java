@@ -8,6 +8,7 @@ import com.project.quiz_service.repository.QuizRepository;
 import com.project.quiz_service.response.ResultResponse;
 import com.project.quiz_service.repository.ResultRepository;
 import com.project.quiz_service.request.ResultRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,6 +27,7 @@ public class ResultService {
     private final QuizRepository quizRepository;
 
     // 퀴즈 결과 만들기
+    @Transactional
     public void createResult(ResultRequest request) {
 
         //request로 받은 퀴즈 아이디로 퀴즈 찾기
@@ -42,6 +44,7 @@ public class ResultService {
         resultRepository.save(result);
     }
 
+    @Transactional
     public Page<ResultResponse> getMyResultList(String token, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size);
@@ -49,7 +52,6 @@ public class ResultService {
         String loginUser = userClient.getCurrentUser(token);
 
         Page<Result> resultPage = resultRepository.findByUsernameOrderByCreatedAtDesc(loginUser, pageable);
-
 
         return resultPage.map(ResultResponse::fromEntity);
     }

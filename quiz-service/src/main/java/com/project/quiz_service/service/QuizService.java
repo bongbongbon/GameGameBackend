@@ -44,6 +44,7 @@ public class QuizService {
     // 퀴즈 만들기
     @CachePut(cacheNames = "quizCache", key = "#result.id")
     @CacheEvict(cacheNames = "quizAllCache", allEntries = true)
+    @Transactional
     public QuizResponse createQuiz(QuizRequest request, String token) {
 
         Quiz quiz = Quiz.builder()
@@ -59,6 +60,7 @@ public class QuizService {
 
     @CachePut(cacheNames = "quizCache", key = "args[0]")
     @CacheEvict(cacheNames = "quizAllCache", allEntries = true)
+    @Transactional
     public QuizResponse updateQuiz(Long quizId, QuizRequest quizRequest) {
 
         Quiz quiz = quizRepository.findById(quizId)
@@ -76,6 +78,7 @@ public class QuizService {
 
     // 퀴즈 삭제
     @CacheEvict(cacheNames = "quizAllCache", allEntries = true)
+    @Transactional
     public void deleteQuiz(Long quizId) {
 
         Quiz quiz = quizRepository.findById(quizId)
@@ -86,6 +89,7 @@ public class QuizService {
 
     // 퀴즈 전체조회(페이징 처리)
     @Cacheable(cacheNames = "quizAllCache", key = "{ args[0], args[1] }")
+    @Transactional
     public Page<QuizResponse> getQuizzes(Integer page, Integer size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
         return quizRepository.findAll(pageable)
@@ -94,6 +98,7 @@ public class QuizService {
 
     // 퀴즈 조회
     @Cacheable(cacheNames = "quizCache", key = "args[0]")
+    @Transactional
     public QuizResponse getQuiz(Long quizId) {
 
         Quiz quiz = quizRepository.findById(quizId)
@@ -109,6 +114,7 @@ public class QuizService {
     }
 
     // 정답유무 확인
+    @Transactional
     public Boolean checkAnswer(QuizCheckAnswerRequest request, String token) {
 
         Boolean isCorrect = false;
@@ -138,6 +144,7 @@ public class QuizService {
     }
 
     // 조회수 증가
+    @Transactional
     public void incrementViewCount(Long quizId) {
         Quiz quiz = quizRepository.findById(quizId)
                 .orElseThrow(() -> CustomException.QUIZ_NOT_FOUND);
@@ -156,6 +163,7 @@ public class QuizService {
     }
 
     // 조회수 가져오기
+    @Transactional
     public int getViewCount(Long quizId) {
         String key = "quizId: " + quizId;
         String count = redisService.getData(key);
@@ -165,6 +173,7 @@ public class QuizService {
 
     // 주기적으로 Redis와 DB 동기화
     @Scheduled(fixedRate = 60000) // 1분마다 실행
+    @Transactional
     public void syncRedisToDb() {
         Set<String> keys = redisService.getKeys("quizId: *");
 
@@ -179,8 +188,10 @@ public class QuizService {
         }
     }
 
+
     @Cacheable(cacheNames = "quizMyCache", key = "{ args[1], args[2] }")
     @CacheEvict(cacheNames = "quizAllCache", allEntries = true)
+    @Transactional
     public Page<QuizResponse> getAllMyQuizzes(String token, int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
@@ -189,7 +200,7 @@ public class QuizService {
                 .map(QuizResponse::fromEntity);
     }
 
-
+    @Transactional
     public List<QuizResponse> getMostAnswer() {
         Set<QuizResponse> ranks = rankService.getTopQuizzes("quizAnswerRanks", 3);
         if(ranks == null) return Collections.emptyList();
