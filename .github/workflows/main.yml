@@ -37,9 +37,9 @@ jobs:
         run: |
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/eureka-server eureka-server
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway api-gateway
-          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/team-service quiz-service
+          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/team-service team-service
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/auth-service auth-service
-          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/resume-service auth-service
+          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/resume-service resume-service
 
       - name: Push Docker
         run: | 
