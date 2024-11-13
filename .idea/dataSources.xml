@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="gamegame@gamegamemsa.c72auqk86wix.ap-northeast-2.rds.amazonaws.com" uuid="80480228-3bf1-46b7-b133-a5e931db0eef">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="0@localhost" uuid="42ab82f3-f1bf-481a-bf91-0c9b32544f27">
+      <driver-ref>redis</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://gamegamemsa.c72auqk86wix.ap-northeast-2.rds.amazonaws.com:3306/gamegame?serverTimezone=Asia/Seoul</jdbc-url>
+      <jdbc-driver>jdbc.RedisDriver</jdbc-driver>
+      <jdbc-url>jdbc:redis://localhost:6379/0</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
@@ -14,11 +13,12 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="0@localhost" uuid="42ab82f3-f1bf-481a-bf91-0c9b32544f27">
-      <driver-ref>redis</driver-ref>
+    <data-source source="LOCAL" name="userdb@localhost" uuid="8a986030-9de6-4a88-9ce6-9c621f507e5c">
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>jdbc.RedisDriver</jdbc-driver>
-      <jdbc-url>jdbc:redis://localhost:6379/0</jdbc-url>
+      <imported>true</imported>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/userdb</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />

@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="IU-241.18034.62">
-    <data-source name="gamegame@gamegamemsa.c72auqk86wix.ap-northeast-2.rds.amazonaws.com" uuid="80480228-3bf1-46b7-b133-a5e931db0eef">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
-      <user-name>admin</user-name>
-      <schema-mapping />
-    </data-source>
     <data-source name="0@localhost" uuid="42ab82f3-f1bf-481a-bf91-0c9b32544f27">
-      <database-info product="Redis Standalone" version="7.4.0" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.5" dbms="REDIS" exact-version="7.4.0" exact-driver-version="1.5">
-        <jdbc-catalog-is-schema>true</jdbc-catalog-is-schema>
-      </database-info>
+      <database-info product="Redis Standalone" version="7.4.0" jdbc-version="4.2" driver-name="Redis JDBC Driver" driver-version="1.5" dbms="REDIS" exact-version="7.4.0" exact-driver-version="1.5" />
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <secret-storage>master_key</secret-storage>
       <user-name>default</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" qname="@" />
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+    <data-source name="userdb@localhost" uuid="8a986030-9de6-4a88-9ce6-9c621f507e5c">
+      <database-info product="MySQL" version="8.0.35" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-8.2.0 (Revision: 06a1f724497fd81c6a659131fda822c9e5085b6c)" dbms="MYSQL" exact-version="8.0.35" exact-driver-version="8.2">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
           <node kind="schema" qname="@" />

@@ -1,2 +1,2 @@
 rootProject.name = 'gamegame'
-include 'eureka-server', 'user-service', 'quiz-service', 'api-gateway', 'auth-service'
+include 'eureka-server', 'notice-service', 'quiz-service', 'api-gateway', 'auth-service', 'monitoring-service', 'team-service' , 'resume-service'

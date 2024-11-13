@@ -1,9 +1,11 @@
 server:
   port: 8082
 
+
 spring:
   application:
     name: quiz-service
+
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -25,6 +27,8 @@ spring:
       username: default
       password: systempass
 
+
+
 eureka:
   client:
     register-with-eureka: true
@@ -33,3 +37,14 @@ eureka:
     disable-delta: true
     service-url:
       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZON}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true

@@ -1,0 +1,46 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: notice-service
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://gamegamemsa.c72auqk86wix.ap-northeast-2.rds.amazonaws.com:3306/gamegame?serverTimezone=Asia/Seoul
+    username: admin
+    password: Gamegame1!
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      username: default
+      password: systempass
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5000
+    disable-delta: true
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZON}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true

@@ -14,8 +14,11 @@
             <option value="$PROJECT_DIR$/api-gateway" />
             <option value="$PROJECT_DIR$/auth-service" />
             <option value="$PROJECT_DIR$/eureka-server" />
+            <option value="$PROJECT_DIR$/monitoring-service" />
+            <option value="$PROJECT_DIR$/notice-service" />
             <option value="$PROJECT_DIR$/quiz-service" />
-            <option value="$PROJECT_DIR$/user-service" />
+            <option value="$PROJECT_DIR$/resume-service" />
+            <option value="$PROJECT_DIR$/team-service" />
           </set>
         </option>
       </GradleProjectSettings>

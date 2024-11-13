@@ -1,0 +1,17 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: monitoring-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
