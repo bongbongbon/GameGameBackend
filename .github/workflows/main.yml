@@ -37,15 +37,18 @@ jobs:
         run: |
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/eureka-server eureka-server
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway api-gateway
-          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service quiz-service
+          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/team-service quiz-service
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/auth-service auth-service
+          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/resume-service auth-service
 
       - name: Push Docker
         run: | 
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/eureka-server:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/team-service:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/resume-service:latest
+    
 
 
       - name: Deploy docker-compose
@@ -60,8 +63,9 @@ jobs:
             # Pull backend images
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/eureka-server:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway:latest
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/quiz-service:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/team-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/resume-service:latest
 
             # Deploy backend services
             sudo docker-compose -f docker-compose-backend.yml down
