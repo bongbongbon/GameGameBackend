@@ -7,14 +7,14 @@ spring:
     name: team-service
 
   datasource:
-    url: jdbc:mysql://localhost:3306/userdb
-    username: root
-    password: Jesuslove1!
+    url: jdbc:mysql://13.125.97.10:3306/gamegameappDB
+    username: admin
+    password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         show_sql: true # sql ??
