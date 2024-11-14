@@ -1,27 +1,15 @@
 server:
-  port: 8080
+  port: 19090
 
 spring:
   main:
     web-application-type: reactive  # Spring 애플리케이션이 리액티브 웹 애플리케이션으로 설정됨
   application:
     name: gateway-service  # 애플리케이션 이름을 'gateway-service'로 설정
+
   cloud:
     gateway:
       routes:
-        - id: quiz-service
-          uri: lb://QUIZ-SERVICE
-          predicates:
-            - Path=/api/quizzes/**
-          filters:
-            - RewritePath=/quiz-service/(?<segment>.*), /$\{segment}
-        - id: auth-service
-          uri: lb://AUTH-SERVICE
-          predicates:
-            - Path=/api/auth/**
-          filters:
-            - RewritePath=/auth-service/(?<segment>.*), /$\{segment}
-
 
   jwt:
     header: Authorization
@@ -36,4 +24,16 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
+
 

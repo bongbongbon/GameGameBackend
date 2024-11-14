@@ -32,7 +32,7 @@ public class FilterConfig {
                         .filters(f -> f.removeRequestHeader("Cookie"))
                         .uri("lb://AUTH-SERVICE"))
 
-                // TEAM command에 관련된 로직 인증인가
+                // AUTH 관련된 로직 인증인가
                 .route("user-get-all-route", r -> r.path("/api/v1/auth/**", "/auth-service/v3/api-docs")
                         .and()
                         .method("GET", "PATCH", "DELETE", "PUT")
