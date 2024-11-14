@@ -39,7 +39,7 @@ jobs:
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway api-gateway
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/team-service team-service
           docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/auth-service auth-service
-          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/resume-service resume-service
+
 
       - name: Push Docker
         run: | 
@@ -47,9 +47,7 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/team-service:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/resume-service:latest
     
-
 
       - name: Deploy docker-compose
         uses: appleboy/ssh-action@master
@@ -65,7 +63,6 @@ jobs:
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/api-gateway:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/team-service:latest
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/auth-service:latest
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/resume-service:latest
 
             # Deploy backend services
             sudo docker-compose -f docker-compose-backend.yml down
