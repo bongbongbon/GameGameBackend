@@ -116,5 +116,13 @@ public class TeamController {
     }
 
 
+    @GetMapping("/{teamId}/user")
+    public ApiSuccessResponse<?> getTeamAndUser(@PathVariable(name = "teamId") Long teamId) {
+
+
+        return ApiSuccessResponse.from(teamService.getTeamAndGetUser(teamId));
+    }
+
+
 
 }

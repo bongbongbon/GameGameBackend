@@ -3,18 +3,20 @@ package com.project.resumeservice.domain.model;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+
 @Getter
 public enum UserRole {
-    USER(Authority.USER),
-    MASTER(Authority.MASTER);
+    ADMIN("Admin"),
+    USER("User");
 
-    private final String authority;
+    private final String roleName;
 
-    public static class Authority {
+    UserRole(String roleName) {
+        this.roleName = roleName;
+    }
 
-        public static final String USER = "ROLE_USER";
-        public static final String MASTER = "ROLE_MASTER";
+    public String getRoleName() {
+        return roleName;
     }
 
 }
