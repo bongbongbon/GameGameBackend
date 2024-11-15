@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
         name = "auth-service",
-        url = "http://127.0.0.1:19091",
+        url = "http://3.37.198.42:19091",
         configuration = UserFeignClientConfig.class,
         fallbackFactory = UserFallback.class
 )
